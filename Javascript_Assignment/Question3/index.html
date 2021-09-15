@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+			rel="stylesheet"
+		/>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: "Open Sans", sans-serif;
+			}
+
+			section {
+				width: 50%;
+				margin: 2rem auto;
+				padding: 1rem 2rem;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				text-align: center;
+			}
+
+			h3 {
+				text-align: center;
+			}
+
+			form {
+				width: 100%;
+				padding: 1rem 0px;
+			}
+
+			form input {
+				padding: 4px 6px;
+				font-size: 14px;
+				width: 50%;
+			}
+
+			form button {
+				padding: 4px 10px;
+				outline: none;
+				border-image: none;
+				font-size: 14px;
+				border: 1px solid black;
+				border-radius: 3px;
+			}
+
+			p {
+				font-size: 14px;
+				padding: 5px 0px;
+			}
+
+			@media (max-width: 700px) {
+				section {
+					width: 80%;
+				}
+
+				form input {
+					width: 100%;
+				}
+
+				form button {
+					margin-top: 10px;
+				}
+			}
+		</style>
+
+		<script src="./app.js" defer></script>
+		<title>Question 3</title>
+	</head>
+	<body>
+		<section>
+			<h3>Circle Area Calculator</h3>
+			<form>
+				<input
+					type="number"
+					class="inputRadius"
+					name="radius"
+					placeholder="Please enter the circle radius"
+				/>
+				<button type="submit" class="calculate">Check</button>
+			</form>
+			<p class="result"></p>
+		</section>
+	</body>
+</html>
