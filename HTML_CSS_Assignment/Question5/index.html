@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Employee Table</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap"
+			rel="stylesheet"
+		/>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: "Open Sans", sans-serif;
+			}
+
+			table {
+				margin: 2rem auto;
+			}
+
+			table,
+			th,
+			td {
+				border: 1px solid black;
+				border-collapse: collapse;
+			}
+
+			caption {
+				padding: 4px 0px;
+			}
+
+			th {
+				text-align: center;
+				background-color: #aaa;
+				color: black;
+			}
+
+			th,
+			td {
+				padding: 8px;
+			}
+
+			td {
+				font-size: 14px;
+			}
+
+			table tr:nth-child(even) {
+				background-color: #ccc;
+			}
+
+			tr:hover {
+				box-shadow: 0px 0px 3px rgba(56, 51, 51, 0.747);
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<table>
+			<caption>
+				Employee Table
+			</caption>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Employee Name</th>
+					<th>Designation</th>
+					<th>Department</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>101</td>
+					<td>Nikunj</td>
+					<td>Software Engineer</td>
+					<td>Development</td>
+				</tr>
+				<tr>
+					<td>102</td>
+					<td>Anmol</td>
+					<td>Devops</td>
+					<td>Development</td>
+				</tr>
+				<tr>
+					<td>103</td>
+					<td>Harsh</td>
+					<td>Software Test Engineer</td>
+					<td>Development</td>
+				</tr>
+				<tr>
+					<td>104</td>
+					<td>Aman</td>
+					<td>Sales</td>
+					<td>Sales</td>
+				</tr>
+				<tr>
+					<td>105</td>
+					<td>Ayush</td>
+					<td>Customer Support</td>
+					<td>IT</td>
+				</tr>
+				<tr>
+					<td>106</td>
+					<td>Kunal</td>
+					<td>Software Engineer</td>
+					<td>Development</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

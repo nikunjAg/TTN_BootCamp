@@ -1,0 +1,149 @@
+:root {
+	--content-max-width: 960px;
+	--background-light-black: #313131;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Raleway", sans-serif;
+	background-color: var(--background-light-black);
+}
+
+.horizontal_line {
+	display: block;
+	margin: 0.5rem 0rem;
+	border-bottom: 1px solid #ccc;
+}
+
+header,
+main,
+footer {
+	margin: 0 2rem;
+}
+
+header {
+	background: var(--background-light-black);
+	box-shadow: 0px 0px 3px 1px rgba(179, 179, 179, 0.26);
+	padding: 1rem 0rem;
+}
+
+header h1,
+header nav {
+	width: var(--content-max-width);
+	margin: 0 auto;
+}
+
+header h1 {
+	color: whitesmoke;
+	margin-bottom: 1rem;
+}
+
+header nav {
+	background-color: #000;
+}
+
+header nav a {
+	display: inline-block;
+	padding: 8px 12px;
+	text-decoration: none;
+	outline: none;
+	border: none;
+	color: whitesmoke;
+}
+
+main {
+	background-color: #fff;
+}
+
+section {
+	width: var(--content-max-width);
+	margin: 0rem auto;
+	padding: 1rem 0rem;
+}
+
+.image_section .main_image {
+	height: 360px;
+	text-align: center;
+	color: #fff;
+	font-size: 18px;
+	margin-bottom: 1rem;
+	background-color: var(--background-light-black);
+	font-size: 25px;
+	position: relative;
+}
+
+.center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.image_section .content {
+	background-color: #ccc;
+	color: #494949;
+	text-transform: uppercase;
+	padding: 10px;
+	letter-spacing: 2px;
+	font-size: 14px;
+	text-align: justify;
+}
+/* 
+#gallery_section {
+} */
+
+.gallery {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 1rem;
+}
+
+.gallery_card {
+	border: 1px solid #ccc;
+	padding: 2px;
+}
+
+.gallery_card .gallery_image {
+	width: 215px;
+	height: 315px;
+	position: relative;
+	background-color: var(--background-light-black);
+	color: #fff;
+	font-size: 20px;
+}
+
+.gallery_card .card_content {
+	background-color: #ccc;
+	color: #000;
+	text-align: center;
+	font-size: 13px;
+	padding: 4px 0px;
+}
+
+footer {
+	background-color: black;
+	box-shadow: 0px 0px 3px 1px rgb(179 179 179 / 26%);
+}
+
+footer .content {
+	width: var(--content-max-width);
+	color: #ccc;
+	overflow: auto;
+	padding: 1rem 0rem;
+	margin: 0 auto;
+}
+
+.content .copyright {
+	float: left;
+}
+
+.content .web_layout {
+	float: right;
+}

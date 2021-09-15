@@ -1,0 +1,155 @@
+:root {
+	--primary-color: #2cd3a7;
+	--secondary-color: #33a2cc;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Source Sans Pro", sans-serif;
+}
+
+header {
+	width: 90%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 2rem;
+	color: var(--secondary-color);
+	border-bottom: 1px solid #ccc;
+}
+
+header nav a {
+	display: inline-block;
+	padding: 10px;
+	text-decoration: none;
+	color: #4bb9e0;
+}
+
+.bug_report {
+	width: 50%;
+	margin: 2rem auto;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.bug_report_form {
+	font-family: inherit;
+}
+
+.bug_report_form .form_header,
+.bug_report_form .form_actions {
+	padding: 1rem;
+	background-color: #d8d8d8;
+	color: #fff;
+}
+
+.bug_report_form .form_inputs {
+	padding: 0rem 1rem;
+}
+
+.form_element {
+	margin: 1rem auto 0.5rem auto;
+}
+
+.form_element > label {
+	display: block;
+	font-size: 14px;
+	margin-bottom: 3px;
+	font-family: inherit;
+}
+
+.form_element > input,
+.form_element > textarea,
+.form_element > select {
+	border-image: none;
+	outline: none;
+	width: 100%;
+	padding: 5px 6px;
+	border-radius: 4px;
+	font-family: inherit;
+	font-size: 16px;
+}
+
+.form_element > input,
+.form_element > textarea {
+	border: 1px solid #ccc;
+}
+
+.form_element > select {
+	border-color: var(--primary-color);
+	background-color: var(--primary-color);
+	color: #fff;
+}
+
+.form_element > select > option {
+	background-color: #fff;
+	color: black;
+	border-color: #fff;
+}
+
+.form_element .radio_group {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.form_element .radio_group .form_radio_element {
+	flex: 1;
+}
+
+#attachment {
+	border-radius: 4px;
+	font-family: inherit;
+	font-size: 16px;
+	border: 1px solid #ccc;
+}
+
+#attachment input {
+	display: none;
+}
+
+#attachment label {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	cursor: pointer;
+}
+
+#attachment p {
+	padding: 5px 8px;
+}
+
+#attachment label p.filename {
+	flex: 1;
+}
+
+#attachment label p.browseBtn {
+	background-color: #ccc;
+	color: #fff;
+}
+
+.form_actions {
+	overflow: auto;
+}
+
+.form_actions input[type="submit"] {
+	outline: none;
+	border-image: none;
+	border: 1px solid var(--primary-color);
+	color: #fff;
+	border-radius: 6px;
+	padding: 6px 10px;
+	font-size: 16px;
+	font-family: inherit;
+	background-color: var(--primary-color);
+	font-weight: 600;
+	float: right;
+	cursor: pointer;
+}
