@@ -53,7 +53,13 @@ console.log(ageGroupedEmployees);
 
 
 // 4. Fetch employees with salary less than 1000 and age greater than 20. Then give them an increment 5 times their salary.
-const salaryAgeFilteredEmployees = employees.filter(e => e.salary < 1000 && e.age > 20);
+const salaryAgeFilteredEmployees = [];
+
+for(let i = 0;i<employees.length;i++) {
+    if (employees[i].salary < 1000 && employees[i].age > 20) {
+        salaryAgeFilteredEmployees.push({ ...employees[i], salary: 6*employees[i].salary });
+    }
+}
 
 console.log(salaryAgeFilteredEmployees);
 
