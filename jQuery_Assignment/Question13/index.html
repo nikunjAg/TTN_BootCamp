@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			div {
+				border: 1px solid black;
+			}
+			.a {
+				height: 50px;
+			}
+			.b {
+				height: 80px;
+			}
+			.c {
+				height: 70px;
+			}
+			.d {
+				height: 130px;
+			}
+		</style>
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="a">Div A</div>
+		<div class="b">Div B</div>
+		<div class="c">Div C</div>
+		<div class="d">Div D</div>
+
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.slim.js"
+			integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+			crossorigin="anonymous"
+		></script>
+		<script>
+			$(document).ready(function () {
+				var maxHeight = 0;
+				$("div").each(function (idx, ele) {
+					maxHeight = Math.max(maxHeight, $(ele).height());
+				});
+				console.log(maxHeight);
+			});
+		</script>
+	</body>
+</html>

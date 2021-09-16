@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			.wrapper {
+				display: inline-block;
+				position: relative;
+			}
+
+			.wrapper .dropdownBtn {
+				cursor: pointer;
+				height: 20px;
+				font-size: 16px;
+				padding: 2px 6px;
+				border: 1px solid black;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				font-size: 14px;
+			}
+
+			.dropdownBtn p {
+				padding-right: 5px;
+			}
+
+			.dropdownBtn span {
+				font-size: 12px;
+			}
+
+			ul {
+				position: absolute;
+				top: 100%;
+				width: calc(100% - 2px);
+				margin: 0;
+				padding: 0;
+				list-style-type: none;
+				display: none;
+				background-color: #ccc;
+				border: 1px solid black;
+				border-bottom: none;
+			}
+
+			ul li {
+				font-size: 14px;
+				padding: 2px;
+				border-bottom: 1px solid black;
+			}
+
+			.show {
+				display: block;
+			}
+		</style>
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="dropdownBtn">
+				<p>Dropdown</p>
+				<span>˅</span>
+			</div>
+			<ul class="optionsList">
+				<li>Option 1</li>
+				<li>Option 2</li>
+				<li>Option 3</li>
+				<li>Option 4</li>
+			</ul>
+		</div>
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.slim.js"
+			integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+			crossorigin="anonymous"
+		></script>
+		<script>
+			$(document).ready(function () {
+				$(".dropdownBtn").hover(function () {
+					$(".optionsList").addClass("show");
+				});
+
+				$(".dropdownBtn").mouseleave(function () {
+					$(".optionsList").removeClass("show");
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			table {
+				border-collapse: collapse;
+			}
+
+			table,
+			tr {
+				border: 1px solid black;
+			}
+
+			th,
+			td {
+				padding: 3px 6px;
+			}
+
+			.remove-todo {
+				display: flex;
+				justify-content: center;
+			}
+
+			.remove-todo button {
+				cursor: pointer;
+			}
+		</style>
+		<title>Document</title>
+	</head>
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<th>Todos</th>
+					<th>Remove</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Workout</td>
+					<td class="remove-todo"><button>X</button></td>
+				</tr>
+				<tr>
+					<td>Breakfast</td>
+					<td class="remove-todo"><button>X</button></td>
+				</tr>
+				<tr>
+					<td>Check Mails</td>
+					<td class="remove-todo"><button>X</button></td>
+				</tr>
+				<tr>
+					<td>Sleep</td>
+					<td class="remove-todo"><button>X</button></td>
+				</tr>
+			</tbody>
+		</table>
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.js"
+			integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+			crossorigin="anonymous"
+		></script>
+		<script>
+			$(document).ready(function () {
+				$(".remove-todo button").each(function () {
+					var currRemove = this;
+
+					$(this).click(function () {
+						$.ajax({
+							method: "DELETE",
+							url: "https://jsonplaceholder.typicode.com/posts/1",
+							success: function (data, status) {
+								// Success Response
+								console.log(
+									"Success Delete ",
+									$(currRemove).parent().parent()[0]
+								);
+								$(currRemove).parent().parent()[0].remove();
+							},
+						});
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

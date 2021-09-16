@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<select class="dropdown">
+			<option value="option1">Option 1</option>
+			<option value="option2">Option 2</option>
+			<option value="option3">Option 3</option>
+			<option value="option4">Option 4</option>
+		</select>
+
+		<div class="selectedOptions">
+			<p>Selected Options:</p>
+			<ul></ul>
+		</div>
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.slim.js"
+			integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+			crossorigin="anonymous"
+		></script>
+		<script>
+			$(document).ready(function () {
+				var res = $(".selectedOptions ul");
+
+				$(".dropdown").on("change", function (e) {
+					var value = this.options[this.selectedIndex].value;
+					var textContent =
+						this.options[this.selectedIndex].textContent;
+
+					res.append(`<li>${textContent} (${value})</li>`);
+				});
+			});
+		</script>
+	</body>
+</html>

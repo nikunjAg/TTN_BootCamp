@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			table {
+				border-collapse: collapse;
+			}
+
+			table,
+			tr,
+			th,
+			td {
+				border: 1px solid black;
+			}
+		</style>
+		<title>Document</title>
+	</head>
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<th>Product Id</th>
+					<th>Price</th>
+				</tr>
+			</thead>
+			<tbody id="tbody">
+				<tr>
+					<td>2</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>12</td>
+					<td>13</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>3</td>
+				</tr>
+				<tr>
+					<td>43</td>
+					<td>3</td>
+				</tr>
+			</tbody>
+		</table>
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.slim.js"
+			integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+			crossorigin="anonymous"
+		></script>
+		<script>
+			$(document).ready(function () {
+				$("#tbody > tr").each(function (idx, tableRow) {
+					$(this.children).each(function (idx1, tableCell) {
+						var num = +$(tableCell).text();
+						if (num > 10) {
+							$(tableCell).css("color", "red");
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+</html>
