@@ -1,0 +1,168 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.cleafix::after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+body {
+	font-family: "Open Sans", sans-serif;
+}
+
+header {
+	padding: 1rem;
+	border-bottom: 1px solid black;
+}
+
+nav {
+	overflow: hidden;
+}
+
+.menu {
+	overflow: auto;
+	list-style-type: none;
+}
+
+.menu-item {
+	border: 1px solid black;
+	font-size: 16px;
+}
+
+.menu-item a {
+	display: inline-block;
+	text-decoration: none;
+	color: black;
+	padding: 5px 12px;
+}
+
+.logo {
+	float: left;
+}
+.login {
+	float: right;
+}
+
+main {
+}
+
+.main-content {
+	display: flex;
+	width: 100%;
+}
+
+.side-nav {
+	padding: 1rem 2rem;
+	border-right: 1px solid black;
+}
+
+.side-menu {
+	list-style-type: none;
+}
+
+.side-menu-item {
+	padding: 8px 16px;
+	border: 1px solid transparent;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.side-menu-item:hover {
+	border-color: black;
+}
+
+.main-content .content {
+	width: 100%;
+	padding: 1rem 2rem;
+}
+
+.cards {
+	margin: 2rem 0rem;
+	overflow: auto;
+}
+
+.card {
+	float: left;
+	border: 1px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 150px;
+	height: 150px;
+}
+
+.cards .card:not(:last-of-type) {
+	margin-right: 2rem;
+}
+
+.regular-div {
+	margin: 2rem 0rem;
+}
+
+.regular-div .card {
+	width: 300px;
+	height: 300px;
+	float: left;
+	margin: 0 1rem 1rem 0;
+}
+
+.regular-div > p {
+	text-align: justify;
+}
+
+.user-data-form {
+	margin: 2rem 0rem;
+}
+
+.user-data-form > form {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.form-element {
+	float: left;
+}
+
+.form-element > label {
+	display: block;
+	font-size: 14px;
+	margin-bottom: 4px;
+	font-family: inherit;
+}
+
+.form-element input {
+	padding: 4px 10px;
+	font-family: inherit;
+	border: 1px solid black;
+	border-radius: 4px;
+	border-image: none;
+	outline: none;
+	font-size: 15px;
+}
+
+.form-element input[type="submit"] {
+	padding: 8px 14px;
+	cursor: pointer;
+}
+
+.user-data {
+	margin: 2rem 0rem;
+}
+
+.user-data .users-details {
+	margin: 0 auto;
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+.users-details th,
+.users-details td {
+	border: 1px solid black;
+	padding: 5px 10px;
+}

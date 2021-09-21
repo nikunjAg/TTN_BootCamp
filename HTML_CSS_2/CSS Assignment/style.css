@@ -1,0 +1,58 @@
+* {
+	box-sizing: border-box;
+}
+
+.font-properties {
+	font-family: "Open Sans", sans-serif;
+}
+
+.font-properties > p {
+	font-size: 12px;
+	font-weight: 300;
+}
+
+.background-properties {
+	background: url("https://media.istockphoto.com/photos/dark-black-and-blue-grungy-wall-background-for-display-or-montage-of-picture-id1150477705?k=20&m=1150477705&s=612x612&w=0&h=Yrqw1w6bEJ40kZFTSovkLtu4VE52zLgl-n6AE1t2BuM=");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	color: #fff;
+}
+
+.pseudo-classes ul {
+	border: 1px solid black;
+}
+
+.pseudo-classes ul::before {
+	content: "Before Element";
+	display: inline-block;
+	font-size: 12px;
+}
+.pseudo-classes ul::after {
+	content: "After Element";
+	display: inline-block;
+	font-size: 12px;
+}
+
+.pseudo-classes ul li:last-child {
+	color: red;
+}
+
+.combinators > p {
+	color: green;
+}
+
+.combinators > h4 + p {
+	color: red;
+}
+
+.attribute-selector input[type="text"] {
+	padding: 6px 10px;
+	width: 50%;
+	border: 1px solid black;
+	border-radius: 4px;
+	outline: none;
+	border-image: none;
+	font-family: inherit;
+	font-size: 14px;
+}
