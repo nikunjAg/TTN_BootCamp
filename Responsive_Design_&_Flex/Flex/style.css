@@ -1,0 +1,312 @@
+:root {
+	--primary-color: #4096d8;
+	--secondary-color: #fafafa;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Poppins", sans-serif;
+}
+
+.button {
+	border-image: none;
+	outline: none;
+	background-color: transparent;
+	color: var(--primary-color);
+	border: 1px solid var(--primary-color);
+	font-size: 0.73rem;
+	padding: 0.7rem 2rem;
+	border-radius: 1.15rem;
+	margin-top: 1.5rem;
+	cursor: pointer;
+	transition: background-color 0.25s ease-out;
+	font-family: inherit;
+}
+
+.cta-filled {
+	background-color: var(--primary-color);
+	border-radius: 0;
+	color: #fff;
+}
+
+.cta-white {
+	background-color: var(--secondary-color);
+	border-radius: 0;
+	color: var(--primary-color);
+}
+
+/* Landing Section */
+#landing {
+	height: 100vh;
+	background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.72)),
+		url("https://walksf.org/wp-content/uploads/2018/10/6th-street.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#landing .content {
+	color: #fff;
+	width: 50%;
+	text-align: center;
+}
+
+#landing .content h2 {
+	font-size: 2rem;
+	font-weight: 400;
+	margin-bottom: 1rem;
+}
+
+#landing .content p {
+	font-size: 0.8rem;
+	font-weight: 300;
+	color: #c5c5c5;
+}
+
+/* Section A */
+.image-content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 4rem 3rem;
+}
+
+#sectionA {
+	background: var(--secondary-color);
+}
+
+#sectionA .side-image {
+	background: url("https://img.huffingtonpost.com/asset/5e6a9d34230000f5210c5e65.jpeg?ops=scalefit_720_noupscale");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	border-radius: 50%;
+	width: 18rem;
+	height: 18rem;
+	margin: 0 1rem;
+	object-fit: contain;
+}
+
+.contentA {
+	flex: 1;
+	padding: 0 1rem;
+}
+
+.contentA h2 {
+	font-size: 1.5rem;
+	font-weight: 400;
+	margin-bottom: 1rem;
+}
+
+.contentA p {
+	font-size: 0.75rem;
+	font-weight: 300;
+}
+
+.contentA p:not(:last-of-type) {
+	margin-bottom: 1rem;
+}
+
+#sectionB {
+	background: var(--primary-color);
+	color: var(--secondary-color);
+}
+
+#sectionB .side-image {
+	background: url("https://wwwnc.cdc.gov/travel/images/hiker-ocean-extreme.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	border-radius: 50%;
+	width: 18rem;
+	height: 18rem;
+	margin: 0 1rem;
+	object-fit: contain;
+}
+
+#sectionC {
+	padding: 4rem 3rem;
+	text-align: center;
+	background: var(--secondary-color);
+}
+
+#sectionC .h2 {
+	font-weight: 400;
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+
+#sectionC > p {
+	font-size: 0.8rem;
+	color: #777;
+}
+
+.cards {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	margin: 2rem 0rem;
+}
+
+.cards .card {
+	padding: 1rem;
+}
+
+.card img {
+	width: 10rem;
+	height: 10rem;
+	object-fit: cover;
+	border-radius: 50%;
+}
+
+.card p {
+	font-size: 0.7rem;
+	color: #999;
+	margin: 1rem 0rem;
+}
+
+/* Footer */
+footer {
+	padding: 3rem;
+}
+
+.row {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.row .icon {
+	border-radius: 50%;
+	background: #f5f5f5;
+	box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.05);
+	margin-right: 0.5rem;
+	height: 36px;
+	width: 36px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.icon i {
+	font-size: 1rem;
+	color: #444;
+	width: 16px;
+	height: 16px;
+	line-height: 100%;
+	text-align: center;
+}
+
+.copyright {
+	text-align: center;
+	font-size: 0.8rem;
+	color: #aaa;
+	margin-top: 1rem;
+}
+
+/*  */
+
+@media (max-width: 768px) {
+	#landing .content {
+		width: 65%;
+	}
+
+	#sectionA {
+		flex-direction: column;
+	}
+
+	#sectionB {
+		flex-direction: column-reverse;
+	}
+
+	.image-content .contentA {
+		text-align: center;
+	}
+
+	.image-content .contentA h2 {
+		margin-top: 1rem;
+	}
+
+	#sectionA .side-image,
+	#sectionB .side-image {
+		width: 15rem;
+		height: 15rem;
+	}
+
+	#sectionC .cards {
+		flex-wrap: wrap;
+	}
+
+	.cards .card {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		padding: 2rem 0rem;
+	}
+
+	.cards .card:not(:last-of-type) {
+		border-bottom: 1px solid #f1f1f1;
+	}
+
+	.card img {
+		width: 7rem;
+		height: 7rem;
+	}
+
+	.card .cont {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 0rem 2rem;
+	}
+
+	.card .cont p {
+		margin: 0;
+	}
+
+	.card .cont button {
+		padding: 0.5rem 1rem;
+		margin-top: 0.8rem;
+		font-size: 0.675rem;
+	}
+}
+
+@media (max-width: 500px) {
+	#landing .content {
+		width: 80%;
+	}
+
+	#sectionA,
+	#sectionB,
+	#sectionC {
+		padding: 3rem 1rem;
+	}
+
+	.cards {
+		margin-bottom: 0rem;
+	}
+
+	.cards .card {
+		flex-direction: column;
+		align-items: center;
+		padding: 2rem 0rem;
+	}
+
+	.cards .card img {
+		margin-bottom: 1rem;
+	}
+}
