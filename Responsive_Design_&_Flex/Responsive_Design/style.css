@@ -27,6 +27,7 @@ body {
 	color: var(--primary-color);
 	border: 2px solid var(--primary-color);
 	font-size: 0.63rem;
+	font-weight: normal;
 	padding: 0.7rem 2rem;
 	border-radius: 1.15rem;
 	margin-top: 1.5rem;
@@ -102,27 +103,31 @@ body {
 
 .landing-header .side-nav {
 	display: none;
-	position: absolute;
+	position: fixed;
 	right: 0;
 	top: 0;
 	width: 45%;
 	height: 100%;
 	background-color: var(--primary-color);
-	padding: 2rem 1rem;
+	padding: 1rem 2rem 0rem 1rem;
 }
 
 .side-nav .close {
 	text-align: right;
 	cursor: pointer;
+	line-height: 100%;
+}
+
+.side-nav .close span {
+	font-weight: bold;
 }
 
 .side-nav .side-nav-menu {
 	list-style-type: none;
-	padding: 0.5rem 2rem;
 }
 
-.side-nav-menu .side-nav-menu-item {
-	margin-bottom: 0.5rem;
+.side-nav-menu .side-nav-menu-item:not(:last-of-type) {
+	border-bottom: 1px solid #ccc;
 }
 
 .side-nav-menu .side-nav-menu-item a {
@@ -131,6 +136,7 @@ body {
 	color: #ffffffe1;
 	font-size: 1.2rem;
 	font-weight: 300;
+	padding: 0.6rem 0.4rem;
 }
 
 .side-nav-menu .side-nav-menu-item a:hover {
