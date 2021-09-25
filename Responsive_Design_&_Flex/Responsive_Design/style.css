@@ -102,14 +102,16 @@ body {
 }
 
 .landing-header .side-nav {
-	display: none;
+	/* display: none; */
 	position: fixed;
 	right: 0;
 	top: 0;
-	width: 45%;
+	/* width: 45%; */
+	padding-top: 1rem;
+	width: 0;
 	height: 100%;
 	background-color: var(--primary-color);
-	padding: 1rem 2rem 0rem 1rem;
+	transition: width 0.3s ease-out;
 }
 
 .side-nav .close {
@@ -253,6 +255,8 @@ body {
 	}
 
 	.landing-header .side-nav.d-block {
+		padding: 1rem 2rem 0rem 1rem;
+		width: 45%;
 		display: block;
 	}
 
@@ -283,7 +287,7 @@ body {
 		padding: 0 3rem;
 	}
 
-	.landing-header .side-nav {
+	.landing-header .side-nav.d-block {
 		width: 60%;
 	}
 }
