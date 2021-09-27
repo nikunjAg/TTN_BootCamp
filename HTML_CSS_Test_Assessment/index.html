@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Icons -->
+		<link
+			href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+			rel="stylesheet"
+		/>
+
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600;900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Style sheet -->
+		<link rel="stylesheet" href="./style.css" />
+
+		<!-- Script -->
+		<script src="./app.js" defer></script>
+
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- Main Header -->
+		<header class="main-header">
+			<div class="container">
+				<div class="logo">
+					<img src="./assets/logo.png" alt="" />
+				</div>
+				<nav class="header-nav">
+					<ul class="header-menu">
+						<li class="header-menu-item">
+							<a href="">Sign In</a>
+						</li>
+						<li class="header-menu-item">
+							<a href="">Sign Up</a>
+						</li>
+					</ul>
+					<div class="aviva">
+						<img src="./assets/right-logo.png" alt="" />
+					</div>
+
+					<button class="hamburger">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Mobile Nav -->
+		<nav class="mobile-nav">
+			<!-- <button class="close-btn">
+				<span class="material-icons-outlined"> close </span>
+			</button> -->
+			<ul class="mobile-menu">
+				<li><a href="">Sign In</a></li>
+				<li><a href="">Sign Up</a></li>
+			</ul>
+		</nav>
+
+		<!-- Landing Banner -->
+		<main>
+			<section id="landing-banner">
+				<div class="banner">
+					<div class="container">
+						<div class="banner-heading">
+							<h3>Take the</h3>
+							<h3>Kidoscope phiscometric</h3>
+							<h3>assessments & spot the early signs.</h3>
+							<button class="cta-btn">
+								TAKE A QUICK FREE TEST
+							</button>
+						</div>
+						<div class="form-card">
+							<h3>Interested? Connect with us!</h3>
+							<small>Guaranteed response within 12 hours</small>
+							<form action="">
+								<input
+									type="text"
+									placeholder="Name"
+									name="name"
+								/>
+								<input
+									type="email"
+									placeholder="Email"
+									name="email"
+								/>
+								<input
+									type="number"
+									placeholder="Phone"
+									name="phone"
+									minlength="6"
+									maxlength="10"
+								/>
+								<input type="submit" value="Submit" />
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="customer-reviews">
+				<div class="container">
+					<header>
+						<div class="icon">
+							<img src="./assets/icon.png" alt="" />
+						</div>
+						<div class="heading">
+							<h2>What our happy</h2>
+							<h2>customers are saying.</h2>
+						</div>
+					</header>
+					<div class="reviews">
+						<div class="review">
+							<p class="content">
+								Lorem ipsum dolor sit, amet consectetur
+								adipisicing elit. Nihil voluptatem est deserunt
+								laudantium maxime vitae tempore expedita nostrum
+								temporibus delectus.
+							</p>
+							<div class="customer">
+								<div class="cust-img">
+									<img src="./assets/icon1.jpg" alt="" />
+								</div>
+								<div class="cust-name">- ADITI RAO</div>
+							</div>
+						</div>
+						<div class="review">
+							<p class="content">
+								Lorem ipsum dolor sit, amet consectetur
+								adipisicing elit. Nihil voluptatem est deserunt
+								laudantium maxime vitae tempore expedita nostrum
+								temporibus delectus.
+							</p>
+							<div class="customer">
+								<div class="cust-img">
+									<img src="./assets/icon2.jpg" alt="" />
+								</div>
+								<div class="cust-name">- SUMIT MEHTA</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
