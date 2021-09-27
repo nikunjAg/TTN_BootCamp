@@ -176,11 +176,6 @@ header .logo {
 	box-shadow: 1px 2px 3px 1px var(--light-header-shadow);
 }
 
-.mobile-nav.is-active {
-	top: calc(5rem - 10px);
-	opacity: 1;
-}
-
 .mobile-menu {
 	list-style-type: none;
 }
@@ -296,5 +291,10 @@ header .logo {
 
 	.hamburger {
 		display: block;
+	}
+
+	.mobile-nav.is-active {
+		top: calc(5rem - 10px);
+		opacity: 1;
 	}
 }
