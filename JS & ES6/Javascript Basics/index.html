@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600;900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: "Fira Sans", sans-serif;
+			}
+
+			.digital-clock {
+				width: 100vw;
+				height: 100vh;
+
+				padding: 1rem 0rem;
+
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+
+				background-color: royalblue;
+				color: #fff;
+
+				text-align: center;
+			}
+
+			.greetings {
+				font-size: 4rem;
+				font-weight: 400;
+				margin-bottom: 1rem;
+			}
+
+			.currentTime {
+				font-size: 5rem;
+				font-weight: 900;
+				margin-bottom: 2rem;
+			}
+
+			.currentDate {
+				font-size: 3rem;
+				font-weight: 600;
+			}
+
+			span {
+				width: 25%;
+				max-width: 300px;
+
+				height: 4px;
+				margin: 2rem 0rem;
+
+				background-color: #fff;
+			}
+		</style>
+		<script src="./app.js" defer></script>
+		<title>Javascript Basics</title>
+	</head>
+	<body>
+		<section class="digital-clock">
+			<div class="greetings">Good Morning</div>
+			<span></span>
+			<div class="currentTime">00:00:00 AM</div>
+			<div class="currentDate">01 Jan 1980</div>
+		</section>
+	</body>
+</html>
