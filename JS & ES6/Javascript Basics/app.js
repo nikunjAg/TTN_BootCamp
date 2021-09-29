@@ -2,7 +2,7 @@ const greetingEl = document.querySelector(".greetings");
 const timeEl = document.querySelector(".currentTime");
 const dateEl = document.querySelector(".currentDate");
 
-setInterval(() => {
+function updateClock() {
 	const d = new Date();
 
 	const hours = d.getHours();
@@ -29,4 +29,13 @@ setInterval(() => {
 		month: "short",
 		year: "numeric",
 	});
-}, 1000);
+}
+
+function initClock() {
+	setInterval(() => {
+		updateClock();
+	}, 1000);
+	updateClock();
+}
+
+initClock();
