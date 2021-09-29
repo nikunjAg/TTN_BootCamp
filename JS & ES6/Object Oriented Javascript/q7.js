@@ -14,7 +14,7 @@ console.log("Double mapped array", mappedArr);
 // filter
 // filter is used to filter some selected elements from the array
 // returs the array of selected elements.
-const evenElArr = arr.map(function (el) {
+const evenElArr = arr.filter(function (el) {
 	return el % 2 == 0;
 });
 console.log("Even elements array", evenElArr);
