@@ -7,7 +7,7 @@ console.log(`------Question 4------`);
 // paramenters list -> list of parameters
 
 function fn() {
-	console.log(arguments);
+	console.log(arguments, arguments.length, arguments.callee);
 }
 
 fn(1, 2, 3);
