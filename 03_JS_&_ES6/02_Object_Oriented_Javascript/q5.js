@@ -1,6 +1,6 @@
 console.log(`------Question 5------`);
 
-const InvocationsChecker = (function Parent() {
+const InvocationsChecker = (function () {
 	let invocations = 0;
 	let instances = 0;
 	return function () {
