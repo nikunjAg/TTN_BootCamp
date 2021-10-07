@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Google Icons -->
+		<link
+			href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+			rel="stylesheet"
+		/>
+
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;600;900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Stylesheet -->
+		<link rel="stylesheet" href="./style.css" />
+
+		<link
+			rel="shortcut icon"
+			href="./assets/favicon.png"
+			type="image/x-icon"
+		/>
+		<title>Tic Tac Toe</title>
+	</head>
+	<body>
+		<section id="landing-page">
+			<h1>Tic Tac Toe</h1>
+			<div class="actions">
+				<button>Start A New Game</button>
+			</div>
+		</section>
+
+		<section id="game">
+			<h2>Tic Tac Toe</h2>
+
+			<div class="game-wrapper">
+				<div class="game-grid">
+					<div class="grid-el"></div>
+					<div class="grid-el"></div>
+					<div class="grid-el"></div>
+					<div class="grid-el"></div>
+					<div class="grid-el"></div>
+					<div class="grid-el"></div>
+					<div class="grid-el"></div>
+					<div class="grid-el"></div>
+					<div class="grid-el"></div>
+				</div>
+
+				<div class="result"></div>
+			</div>
+
+			<div class="turn">X - Turn</div>
+			<button class="new-game">New Game</button>
+		</section>
+
+		<script src="./script.js"></script>
+	</body>
+</html>
