@@ -1,0 +1,12 @@
+.App {
+	color: #61fadb;
+}
+
+.expenses {
+	width: 50rem;
+	max-width: 95%;
+	margin: 1rem auto;
+
+	padding: 0.5rem 1rem;
+	background-color: #000;
+}
