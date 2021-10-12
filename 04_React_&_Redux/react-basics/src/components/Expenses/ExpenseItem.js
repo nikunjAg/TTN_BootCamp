@@ -6,9 +6,9 @@ import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
 
 function ExpenseItem(props) {
+	// React hook -> starts with use, should be called directly on components (inside them)
+	// takes the default value and returns a array of value and setter for that value
 	const price = props.amount.toFixed(2);
-
-	console.log(props);
 
 	return (
 		<Card className="expense-item">

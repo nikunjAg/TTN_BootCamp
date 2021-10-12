@@ -1,0 +1,25 @@
+.expenses-filter__control {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	margin: 1rem 0.5rem;
+}
+
+.expenses-filter__control label {
+	font-size: 1rem;
+	color: #fff;
+	font-weight: 600;
+}
+
+.expenses-filter__dropdown {
+	outline: none;
+	cursor: pointer;
+
+	padding: 8px 16px;
+	border-radius: 5px;
+
+	background-color: #fff;
+	color: #000;
+	font-weight: 600;
+}
