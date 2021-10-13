@@ -39,7 +39,7 @@
 .new-expense__actions {
 	width: 22rem;
 	max-width: 100%;
-	/* text-align: right; */
+	text-align: left;
 }
 
 .new-expense__actions button {

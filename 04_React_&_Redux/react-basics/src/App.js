@@ -37,12 +37,7 @@ const EXPENSES = [
 function App() {
 	const [expenses, setExpenses] = useState(EXPENSES);
 
-	// Not working!
-	// const addExpenseHandler = console.log;
 	const addExpenseHandler = (expense) => {
-		console.log(expense);
-		// Not working!
-		// setExpenses([expense].concat);
 		setExpenses((prevExpenses) => [expense].concat(prevExpenses));
 	};
 

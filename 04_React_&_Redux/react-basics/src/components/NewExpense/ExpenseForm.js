@@ -21,10 +21,14 @@ function ExpenseForm(props) {
 	};
 
 	const clearFormHanlder = () => {
-		console.log("CLEAR FORM");
 		setEnteredTitle("");
 		setEnteredAmount("");
 		setEnteredDate("");
+	};
+
+	const onCancelHandler = () => {
+		clearFormHanlder();
+		props.onCancel();
 	};
 
 	const formSubmitHandler = (event) => {
@@ -69,12 +73,15 @@ function ExpenseForm(props) {
 						onChange={dateChangeHandler}
 						value={enteredDate}
 						placeholder="Enter Date"
-						min="2021-01-01"
-						max="2024-12-31"
+						min="2018-01-01"
+						max="2021-12-31"
 					/>
 				</div>
 				<div className="new-expense__actions">
-					<button type="submit">Add Expense</button>
+					<button type="button" onClick={onCancelHandler}>
+						Cancel
+					</button>
+					<button type="submit">Add New Expense</button>
 				</div>
 			</div>
 		</form>

@@ -6,4 +6,17 @@
 	padding: 2rem 1rem;
 
 	background-color: plum;
+	text-align: center;
+}
+
+.new-expense__cta {
+	outline: none;
+	border-image: none;
+	background-color: #770077;
+	border: 1px solid plum;
+	border-radius: 6px;
+	padding: 10px 14px;
+	font-size: 1rem;
+	color: #fff;
+	cursor: pointer;
 }
