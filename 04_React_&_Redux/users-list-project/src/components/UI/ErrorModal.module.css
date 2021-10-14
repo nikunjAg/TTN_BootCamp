@@ -1,0 +1,31 @@
+.error-modal {
+	/* padding: 1rem; */
+}
+
+.error-modal header {
+	padding: 1rem;
+	color: #fff;
+	background-color: blueviolet;
+}
+
+.content {
+	padding: 1rem;
+}
+
+.content ul {
+	margin-left: 1rem;
+}
+
+.error-modal footer {
+	/* To avoid using last-of-type on buttons */
+	margin-right: -0.5rem;
+	padding: 0.5rem;
+	text-align: right;
+
+	border-top: 1px solid gray;
+}
+
+.footer button {
+	margin-right: 1rem;
+	border-radius: 4px;
+}
