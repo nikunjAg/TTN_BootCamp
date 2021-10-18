@@ -1,0 +1,50 @@
+.input {
+	margin: 1rem 0;
+	display: flex;
+	align-items: stretch;
+	flex-direction: column;
+}
+
+.input label,
+.input input {
+	display: block;
+	flex: 1;
+}
+
+.input > label {
+	font-size: 0.9rem;
+	font-weight: bold;
+	color: #444;
+	display: inline-block;
+
+	margin-bottom: 0.3rem;
+}
+
+.input > input {
+	outline: none;
+	border-style: none;
+
+	border: 1px solid #ccc;
+	border-radius: 6px;
+
+	font-size: 1rem;
+	padding: 0.35rem 0.35rem;
+}
+
+.input input:focus {
+	outline: none;
+	border-color: #4f005f;
+	background: #f6dbfc;
+}
+
+.input.invalid input {
+	border-color: red;
+	background: #fbdada;
+}
+
+@media (min-width: 768px) {
+	.input {
+		align-items: center;
+		flex-direction: row;
+	}
+}
