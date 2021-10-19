@@ -1,0 +1,50 @@
+.cart-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	border-bottom: 1px solid brown;
+
+	padding: 10px 0px;
+}
+
+.item-detail h3 {
+	font-size: 1.2rem;
+	font-weight: 600;
+	margin-bottom: 0.6rem;
+}
+
+.item-detail div {
+	width: 120px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.price {
+	display: inline-block;
+
+	color: brown;
+	font-weight: 600;
+}
+
+.qty {
+	display: inline-block;
+
+	border: 1px solid gray;
+	padding: 3px 6px;
+	border-radius: 10px;
+
+	background-color: #fff;
+	margin-left: 5px;
+
+	font-size: 0.85rem;
+}
+
+.actions button {
+	padding: 5px 10px;
+	font-size: 1rem;
+
+	background-color: transparent;
+	color: #000;
+}

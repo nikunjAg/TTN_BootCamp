@@ -1,0 +1,68 @@
+.modal {
+	position: fixed;
+	left: 7%;
+	width: 85%;
+	top: 20vh;
+
+	z-index: 999;
+
+	animation: modal-appear 500ms ease-out;
+}
+
+.modal button {
+	outline: none;
+	border-image: none;
+
+	border: 1px solid brown;
+	border-radius: 4px;
+	background-color: brown;
+
+	cursor: pointer;
+
+	color: #fff;
+	font-size: 1rem;
+	padding: 8px 16px;
+
+	margin-right: 1rem;
+
+	transition: 0.25s ease-out;
+}
+
+.modal button:hover,
+.modal button:active {
+	background-color: #811515;
+	color: #fff;
+}
+
+@keyframes modal-appear {
+	from {
+		opacity: 0;
+		transform: translateY(-4rem);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (min-width: 576px) {
+	.modal {
+		width: 70%;
+		left: 15%;
+	}
+}
+
+@media (min-width: 768px) {
+	.modal {
+		width: 60%;
+		left: 20%;
+	}
+}
+
+@media (min-width: 992px) {
+	.modal {
+		width: 45%;
+		left: 27%;
+	}
+}

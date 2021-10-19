@@ -1,0 +1,39 @@
+.cart {
+	padding: 1.5rem;
+}
+
+.items {
+	font-size: 1rem;
+}
+
+.items__fallback {
+	margin-bottom: 1rem;
+	text-align: center;
+
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.totalPrice {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	padding-top: 1rem;
+	/* border-top: 1px solid gray; */
+
+	font-size: 1.1rem;
+	color: brown;
+	font-weight: 600;
+
+	margin-bottom: 1rem;
+}
+
+.actions {
+	margin-right: -1rem;
+	text-align: right;
+}
+
+.actions button {
+	border-radius: 16px;
+}
