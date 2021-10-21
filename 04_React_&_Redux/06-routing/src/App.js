@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import Welcome from "./pages/Welcome";
 import Products from "./pages/Products";
 import MainHeader from "./components/MainHeader";
+import ProductDetail from "./pages/ProductDetail";
 
 import "./App.css";
-import ProductDetail from "./pages/ProductDetail";
-import { useEffect } from "react/cjs/react.development";
 
 const ITEMS = [
 	{ id: Math.random().toString(), name: "Camera", price: 120 },
@@ -37,12 +36,12 @@ function App() {
 			<main>
 				<h2>App Component</h2>
 				<Switch>
+					<Route path="/" exact>
+						<Redirect to="/welcome" />
+					</Route>
 					<Route path="/welcome">
 						<Welcome />
 					</Route>
-					{/* <Route path="/product-detail/:productId">
-						<ProductDetail />
-					</Route> */}
 					<Route path="/products/:productId">
 						<ProductDetail />
 					</Route>
