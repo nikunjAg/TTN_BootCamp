@@ -1,7 +1,22 @@
 .products {
 	margin: 1rem 0rem;
+	padding: 1rem;
 }
 
-.products ul {
-	margin: 1rem 2rem;
+.products > h3 {
+	font-size: 1.3rem;
+	font-weight: 600;
+	margin-bottom: 1rem;
+	text-decoration: underline;
+}
+
+.products-list {
+	list-style-type: none;
+}
+
+.products-list > a {
+	text-decoration: none;
+	color: #000;
+
+	display: block;
 }

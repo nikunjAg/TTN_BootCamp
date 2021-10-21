@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import styles from "./MainHeader.module.css";
 
 const MainHeader = (props) => {
+	console.log("MainHeader Component Re-rendered");
 	return (
 		<header className={styles.header}>
 			<h1>Routing Intro</h1>

@@ -1,0 +1,26 @@
+.product {
+	margin: 1rem 0rem;
+}
+
+.product > h3 {
+	font-weight: 600;
+	font-size: 1rem;
+
+	text-decoration: underline;
+	margin-bottom: 0.4rem;
+}
+
+.price {
+	font-size: 0.95rem;
+	font-weight: 600;
+
+	color: brown;
+}
+
+.product-id {
+	float: right;
+	font-weight: 300;
+	font-style: italic;
+
+	font-size: 0.8rem;
+}

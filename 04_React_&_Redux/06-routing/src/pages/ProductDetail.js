@@ -6,6 +6,8 @@ import styles from "./ProductDetail.module.css";
 const ProductDetail = (props) => {
 	const params = useParams();
 
+	console.log("ProductDetail Component Re-rendered");
+
 	return (
 		<section className={styles["product-detail"]}>
 			<h4>Product Detail For {params.productId}</h4>
