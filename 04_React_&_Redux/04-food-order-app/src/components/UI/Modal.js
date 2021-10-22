@@ -9,8 +9,10 @@ const Modal = (props) => {
 	const modal = (
 		<Fragment>
 			<Backdrop onClick={props.onCancel} />
-			<Card className={`${styles.modal} ${props.className || ""}`}>
-				{props.children}
+			<Card className={styles.modal}>
+				<div className={`${styles.content} ${props.className || ""}`}>
+					{props.children}
+				</div>
 			</Card>
 		</Fragment>
 	);

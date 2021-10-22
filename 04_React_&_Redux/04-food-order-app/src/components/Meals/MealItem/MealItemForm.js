@@ -7,8 +7,6 @@ const MealItemForm = (props) => {
 	const [amountIsValid, setAmountIsValid] = useState(true);
 	const amountInputRef = useRef();
 
-	console.log("Meal Form Rendered");
-
 	const submitHandler = (event) => {
 		event.preventDefault();
 		console.log("Inside Submit");

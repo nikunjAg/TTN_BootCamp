@@ -1,13 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import Modal from "../UI/Modal";
 import CartContext from "../../store/cart-context";
+import CartItem from "./CartItem";
+import Checkout from "./Checkout";
 
 import styles from "./Cart.module.css";
-import CartItem from "./CartItem";
 
 const Cart = (props) => {
+	const [showCheckoutForm, setShowCheckoutForm] = useState(false);
 	const cartCtx = useContext(CartContext);
+
+	const orderCartItemsHandler = () => {
+		setShowCheckoutForm(true);
+	};
+
+	const orderConfirmHandler = (addressDetails) => {
+		props.onOrder({ orderItems: cartCtx.items, address: addressDetails });
+	};
 
 	const onIncreaseQuantityHandler = (item) => {
 		cartCtx.addItem({ ...item, qty: 1 });
@@ -26,8 +36,19 @@ const Cart = (props) => {
 		/>
 	));
 	const cartItemsList = <ul className={styles.items}>{cartItems}</ul>;
-
 	const totalAmount = cartCtx.totalAmount.toFixed(2);
+
+	const checkout = (
+		<Checkout onCancel={props.onClose} onConfirm={orderConfirmHandler} />
+	);
+	const modalActions = (
+		<div className={styles.actions}>
+			<button onClick={props.onClose}>Cancel</button>
+			{cartItems.length > 0 && (
+				<button onClick={orderCartItemsHandler}>Order Now</button>
+			)}
+		</div>
+	);
 
 	return (
 		<Modal onCancel={props.onClose} className={styles.cart}>
@@ -39,14 +60,9 @@ const Cart = (props) => {
 				<span>Total Amount:</span>
 				<span>$ {totalAmount}</span>
 			</div>
-			<div className={styles.actions}>
-				<button onClick={props.onClose}>Cancel</button>
-				{cartItems.length > 0 && (
-					<button onClick={() => props.onOrder(props.items)}>
-						Order Now
-					</button>
-				)}
-			</div>
+
+			{showCheckoutForm && checkout}
+			{!showCheckoutForm && modalActions}
 		</Modal>
 	);
 };

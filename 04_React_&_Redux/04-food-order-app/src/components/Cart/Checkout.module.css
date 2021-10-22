@@ -1,0 +1,50 @@
+.control {
+	margin: 1rem 0rem;
+}
+
+.control > label,
+.control > input {
+	display: block;
+}
+
+.control > label {
+	font-weight: 600;
+	font-size: 0.9rem;
+	color: #000;
+	margin-bottom: 3px;
+}
+
+.control > input {
+	outline: none;
+	border-image: none;
+
+	border: 1px solid gray;
+	border-radius: 6px;
+
+	background-color: #ddd;
+	padding: 4px 8px;
+	font-size: 1rem;
+	color: #000;
+
+	width: 100%;
+}
+
+.invalid > input {
+	border-color: red;
+	background-color: #ffe2df;
+}
+
+.errorMessage {
+	font-size: 0.85rem;
+	color: red;
+	margin-top: 3px;
+}
+
+.actions {
+	text-align: right;
+	margin-right: -1rem;
+}
+
+.actions > button {
+	border-radius: 18px;
+}

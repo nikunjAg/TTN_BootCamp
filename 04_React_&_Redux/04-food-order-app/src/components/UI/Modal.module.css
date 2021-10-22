@@ -2,14 +2,21 @@
 	position: fixed;
 	left: 7%;
 	width: 85%;
-	top: 20vh;
+	top: 15vh;
 
 	z-index: 999;
+
+	overflow: hidden;
 
 	animation: modal-appear 500ms ease-out;
 }
 
-.modal button {
+.content {
+	max-height: 75vh;
+	overflow-y: scroll;
+}
+
+.content button {
 	outline: none;
 	border-image: none;
 
@@ -28,8 +35,8 @@
 	transition: 0.25s ease-out;
 }
 
-.modal button:hover,
-.modal button:active {
+.content button:hover,
+.content button:active {
 	background-color: #811515;
 	color: #fff;
 }

@@ -14,11 +14,7 @@ const HeaderCartButton = (props) => {
 		0
 	);
 
-	console.log("Re-render");
-
 	useEffect(() => {
-		console.log("Hey!");
-
 		if (cartItemsCount === 0) return;
 
 		setAddAnimation(true);

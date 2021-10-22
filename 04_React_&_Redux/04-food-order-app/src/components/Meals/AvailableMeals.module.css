@@ -10,6 +10,26 @@
 	list-style-type: none;
 }
 
+.mealsError,
+.mealsLoading {
+	width: 650px;
+	max-width: 90%;
+
+	margin: 1rem auto;
+
+	border-radius: 10px;
+	box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.26);
+
+	background-color: #fff;
+	color: #000;
+	text-align: center;
+	padding: 1rem;
+}
+
+.mealsList {
+	padding: 1rem;
+}
+
 @keyframes meals-appear {
 	from {
 		opacity: 0;
