@@ -2,6 +2,35 @@
 	padding: 1.5rem;
 }
 
+.loading {
+	/* Works with respect(relative) to fixed positioned Modal Parent*/
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	z-index: 10;
+
+	background-color: rgba(0, 0, 0, 0.45);
+
+	/* color: #fff; */
+}
+
+.orderPlaced {
+	text-align: center;
+	font-size: 1.2rem;
+}
+
+.orderPlaced > span {
+	color: brown;
+	font-size: 1.25rem;
+}
+
 .items {
 	font-size: 1rem;
 }
@@ -34,6 +63,7 @@
 	text-align: right;
 }
 
+.cart button,
 .actions button {
 	border-radius: 16px;
 }

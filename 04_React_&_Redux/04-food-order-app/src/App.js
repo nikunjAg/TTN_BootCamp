@@ -16,34 +16,12 @@ const App = () => {
 		setShowCart(false);
 	};
 
-	const orderCartItemsHandler = async (orderData) => {
-		const response = await fetch(
-			"https://react-http-4888a-default-rtdb.firebaseio.com/orders.json",
-			{
-				method: "POST",
-				body: JSON.stringify(orderData),
-				headers: {
-					"Content-Type": "application/json",
-				},
-			}
-		);
-
-		const data = await response.json();
-
-		console.log(data);
-	};
-
 	return (
 		<CartProvider>
 			<Header onOpenCart={showCartHandler} />
 			<main>
 				<Meals />
-				{showCart && (
-					<Cart
-						onClose={hideCartHandler}
-						onOrder={orderCartItemsHandler}
-					/>
-				)}
+				{showCart && <Cart onClose={hideCartHandler} />}
 			</main>
 		</CartProvider>
 	);
