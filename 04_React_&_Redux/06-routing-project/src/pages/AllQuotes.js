@@ -8,6 +8,7 @@ const DUMMY_QUOTES = [
 ];
 
 const AllQuotes = (props) => {
+	console.log("All Quotes Component");
 	return <QuoteList quotes={DUMMY_QUOTES} />;
 };
 

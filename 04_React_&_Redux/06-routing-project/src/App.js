@@ -6,6 +6,7 @@ import AllQuotes from "./pages/AllQuotes";
 import QuoteDetail from "./pages/QuoteDetail";
 import NewQuote from "./pages/NewQuote";
 import Layout from "./components/layout/Layout";
+import NotFound from "./pages/NotFound";
 
 function App() {
 	console.log("App Component Re-rendered");
@@ -13,6 +14,9 @@ function App() {
 	return (
 		<Layout>
 			<Switch>
+				<Route path="/" exact>
+					<Redirect to="/quotes" />
+				</Route>
 				<Route path="/quotes/:id">
 					<QuoteDetail />
 				</Route>
@@ -22,8 +26,8 @@ function App() {
 				<Route path="/new-quote">
 					<NewQuote />
 				</Route>
-				<Route path="/">
-					<Redirect to="/quotes" />
+				<Route path="*">
+					<NotFound />
 				</Route>
 			</Switch>
 		</Layout>
