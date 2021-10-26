@@ -1,21 +1,49 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Route, Link, useParams, useRouteMatch } from "react-router-dom";
 import Comments from "../components/comments/Comments";
 import HighlightedQuote from "../components/quotes/HighlightedQuote";
+import LoadingSpinner from "../components/UI/LoadingSpinner";
 
-const DUMMY_QUOTES = [
-	{ id: "q1", author: "Nikunj", text: "Learning React" },
-	{ id: "q2", author: "Nikunj", text: "JS is FUN!!" },
-];
+import useHttp from "../hooks/use-http";
+import { getSingleQuote } from "../lib/api";
 
 const QuoteDetail = (props) => {
-	const { id } = useParams();
+	const { id: quoteId } = useParams();
 	const match = useRouteMatch();
 
-	const quote = DUMMY_QUOTES.find((quote) => quote.id === id);
+	const {
+		status,
+		error,
+		data: quote,
+		sendRequest: fetchQuote,
+	} = useHttp(getSingleQuote, true);
 
-	if (!quote) return <p>No such quote found.</p>;
+	useEffect(() => {
+		fetchQuote(quoteId);
+	}, [fetchQuote, quoteId]);
+
+	useEffect(() => {
+		return () => {
+			console.log("Quote Detail Unmounted");
+		};
+	}, []);
+
+	if (status === "pending") {
+		return (
+			<div className="centered">
+				<LoadingSpinner />
+			</div>
+		);
+	}
+
+	if (error) {
+		return <div className="centered focused">{error}</div>;
+	}
+
+	if (!quote.text) {
+		return <p className="centered focused">No such quote found.</p>;
+	}
 
 	return (
 		<section>
@@ -28,7 +56,7 @@ const QuoteDetail = (props) => {
 				</div>
 			</Route>
 			<Route path={match.path + "/comments"}>
-				<Comments />
+				<Comments quoteId={quoteId} />
 			</Route>
 		</section>
 	);
