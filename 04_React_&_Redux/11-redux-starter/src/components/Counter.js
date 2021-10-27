@@ -4,14 +4,16 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "./Counter.module.css";
 
 const Counter = () => {
-	console.log("Counter Rerendered");
-
-	const counter = useSelector((state) => state.counter);
 	const dispatch = useDispatch();
+	const counter = useSelector((state) => state.counter);
+	const showCounter = useSelector((state) => state.showCounter);
 
+	console.log("Counter Rerendered");
 	console.log(`Counter: ${counter}`);
 
-	const toggleCounterHandler = () => {};
+	const toggleCounterHandler = () => {
+		dispatch({ type: "TOGGLE_VISIBILITY" });
+	};
 
 	const incrementCounterHandler = () => {
 		dispatch({ type: "INCREMENT" });
@@ -29,7 +31,7 @@ const Counter = () => {
 	return (
 		<main className={styles.counter}>
 			<h1>Redux Counter</h1>
-			<div className={styles.value}>{counter}</div>
+			{showCounter && <div className={styles.value}>{counter}</div>}
 			<div className={styles.actions}>
 				<button onClick={incrementCounterHandler}>INCREMENT</button>
 				<button onClick={increaseCounterHandler}>Increase by 5</button>
