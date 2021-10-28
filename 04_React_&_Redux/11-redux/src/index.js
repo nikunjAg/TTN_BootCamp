@@ -46,13 +46,13 @@ const filmsInitState = {
 // Films Reducer
 const filmsReducer = (state = filmsInitState, action) => {
 	switch (action.type) {
-		case "pending": {
+		case "PENDING": {
 			return { ...state, loading: true, error: null };
 		}
-		case "success": {
+		case "SUCCESS": {
 			return { ...state, loading: false, films: action.films };
 		}
-		case "error": {
+		case "FAILED": {
 			return { ...state, loading: false, error: action.error };
 		}
 		default:
@@ -105,10 +105,13 @@ const increment = () => ({ type: "INCREMENT" });
 const decrement = () => ({ type: "DECREMENT" });
 const addUser = (user) => ({ type: "ADD_USER", user });
 const double = () => ({ type: "DOUBLE" });
+const apiCallStarted = () => ({ type: "PENDING" });
+const apiCallSuccess = (films) => ({ type: "SUCCESS", films });
+const apiCallFailed = (error) => ({ type: "FAILED", error });
 
 const sendRequest = (requestConfig) => {
 	return (dispatch) => {
-		dispatch({ type: "pending" });
+		dispatch(apiCallStarted());
 
 		fetch(requestConfig.url, {
 			method: requestConfig.method || "GET",
@@ -121,10 +124,10 @@ const sendRequest = (requestConfig) => {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				dispatch({ type: "success", films: data.results });
+				dispatch(apiCallSuccess(data.results));
 			})
 			.catch((e) => {
-				dispatch({ type: "error", error: e });
+				dispatch(apiCallFailed(e));
 			});
 	};
 };
