@@ -47,13 +47,13 @@ const filmsInitState = {
 const filmsReducer = (state = filmsInitState, action) => {
 	switch (action.type) {
 		case "pending": {
-			return { ...state, loading: true };
+			return { ...state, loading: true, error: null };
 		}
 		case "success": {
-			return { ...state, films: action.films, error: null };
+			return { ...state, loading: false, films: action.films };
 		}
 		case "error": {
-			return { ...state, films: [], error: action.error };
+			return { ...state, loading: false, error: action.error };
 		}
 		default:
 			return state;
@@ -80,7 +80,15 @@ const multipleDispatch = (store) => (next) => (action) => {
 	next(action);
 };
 
-const mdw = applyMiddleware(multipleDispatch, logger);
+const asyncMiddleware = (store) => (next) => (action) => {
+	if (typeof action === "function") {
+		action(store.dispatch);
+		return;
+	}
+	next(action);
+};
+
+const mdw = applyMiddleware(asyncMiddleware, multipleDispatch, logger);
 
 // Store
 const store = createStore(rootReducer, mdw);
@@ -98,24 +106,27 @@ const decrement = () => ({ type: "DECREMENT" });
 const addUser = (user) => ({ type: "ADD_USER", user });
 const double = () => ({ type: "DOUBLE" });
 
-const sendRequest = (requestConfig, dispatch) => {
-	dispatch({ type: "pending" });
+const sendRequest = (requestConfig) => {
+	return (dispatch) => {
+		dispatch({ type: "pending" });
 
-	fetch(requestConfig.url, {
-		method: requestConfig.method || "GET",
-		body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,
-		headers: requestConfig.headers || {
-			"Content-Type": "application/json",
-		},
-	})
-		.then((response) => response.json())
-		.then((data) => {
-			dispatch({ type: "success", films: data.results });
+		fetch(requestConfig.url, {
+			method: requestConfig.method || "GET",
+			body: requestConfig.body
+				? JSON.stringify(requestConfig.body)
+				: null,
+			headers: requestConfig.headers || {
+				"Content-Type": "application/json",
+			},
 		})
-		.catch((e) => {
-			dispatch({ type: "error", error: e });
-		});
-	return { type: "" };
+			.then((response) => response.json())
+			.then((data) => {
+				dispatch({ type: "success", films: data.results });
+			})
+			.catch((e) => {
+				dispatch({ type: "error", error: e });
+			});
+	};
 };
 
 // Dispatching Actions
@@ -130,8 +141,5 @@ store.dispatch(double());
 store.dispatch(addUser({ name: "Harsh", age: 23 }));
 
 store.dispatch(
-	sendRequest(
-		{ url: "https://swapi.dev/api/films", method: "GET" },
-		store.dispatch
-	)
+	sendRequest({ url: "https://swapi.dev/api/films", method: "GET" })
 );
