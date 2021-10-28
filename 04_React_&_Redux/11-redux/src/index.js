@@ -1,4 +1,4 @@
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 
 const counterInitState = {
 	counter: 0,
@@ -66,17 +66,31 @@ const rootReducer = combineReducers({
 	films: filmsReducer,
 });
 
+// Middlewares
+const logger = (store) => (next) => (action) => {
+	console.log(`ACTION DISPATCHED ${action.type}`);
+	next(action);
+};
+
+const multipleDispatch = (store) => (next) => (action) => {
+	if (Array.isArray(action)) {
+		action.forEach((act) => store.dispatch(act));
+		return;
+	}
+	next(action);
+};
+
+const mdw = applyMiddleware(multipleDispatch, logger);
+
 // Store
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, mdw);
 
 // Subscriptions
 store.subscribe(() => {
-	console.log("Redux Store Updated: ", store.getState());
+	console.log("Store Updated: ", store.getState());
 });
 
 console.log(store.getState());
-
-// Middlewares
 
 // Action Creators
 const increment = () => ({ type: "INCREMENT" });
@@ -105,8 +119,7 @@ const sendRequest = (requestConfig, dispatch) => {
 };
 
 // Dispatching Actions
-store.dispatch(increment());
-store.dispatch(increment());
+store.dispatch([increment(), increment()]);
 
 store.dispatch(addUser({ name: "Nikunj", age: 22 }));
 
