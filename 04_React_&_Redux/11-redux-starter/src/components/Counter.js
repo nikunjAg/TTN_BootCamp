@@ -2,14 +2,13 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import styles from "./Counter.module.css";
-import { counterActions } from "../store";
+import { counterActions } from "../store/counter";
 
 const Counter = () => {
 	const dispatch = useDispatch();
 	const counter = useSelector((state) => state.counter.counter);
 	const showCounter = useSelector((state) => state.counter.showCounter);
 
-	console.log("Counter Rerendered");
 	console.log(`Counter: ${counter}`);
 
 	const toggleCounterHandler = () => {
