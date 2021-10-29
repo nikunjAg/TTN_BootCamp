@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import styles from "./Counter.module.css";
+import { counterActions } from "../store";
 
 const Counter = () => {
 	const dispatch = useDispatch();
@@ -12,20 +13,20 @@ const Counter = () => {
 	console.log(`Counter: ${counter}`);
 
 	const toggleCounterHandler = () => {
-		dispatch({ type: "TOGGLE_VISIBILITY" });
+		dispatch(counterActions.toggleVisibility());
 	};
 
 	const incrementCounterHandler = () => {
-		dispatch({ type: "INCREMENT" });
+		dispatch(counterActions.increment());
 		console.log(`Counter In Function: ${counter}`);
 	};
 
 	const increaseCounterHandler = () => {
-		dispatch({ type: "INCREASE", value: 5 });
+		dispatch(counterActions.increase({ value: 5 }));
 	};
 
 	const decrementCounterHandler = () => {
-		dispatch({ type: "DECREMENT" });
+		dispatch(counterActions.decrement());
 	};
 
 	return (

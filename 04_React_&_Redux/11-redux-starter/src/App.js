@@ -1,14 +1,18 @@
-import React from "react";
+import React, { Fragment } from "react";
 
-import "./App.css";
+import Header from "./components/Header";
+import Auth from "./components/Auth";
 import Counter from "./components/Counter";
+import "./App.css";
 
 function App() {
 	console.log("App Rerendered");
 	return (
-		<div className="App">
+		<Fragment>
+			<Header />
+			<Auth />
 			<Counter />
-		</div>
+		</Fragment>
 	);
 }
 
