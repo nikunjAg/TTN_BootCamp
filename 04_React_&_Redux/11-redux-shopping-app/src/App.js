@@ -6,7 +6,7 @@ import Cart from "./components/Cart/Cart";
 import Products from "./components/Shop/Products";
 import Notification from "./components/UI/Notification";
 import "./App.css";
-import { sendCartData } from "./store/cart-slice";
+import { fetchCartData, sendCartData } from "./store/cart-actions";
 
 let initialTime = true;
 
@@ -17,12 +17,23 @@ function App() {
 	const cart = useSelector((state) => state.cart);
 
 	useEffect(() => {
+		dispatch(fetchCartData());
+	}, [dispatch]);
+
+	useEffect(() => {
 		if (initialTime) {
 			initialTime = false;
 			return;
 		}
 
-		dispatch(sendCartData(cart));
+		if (cart.changed)
+			dispatch(
+				sendCartData({
+					items: cart.items,
+					totalItems: cart.totalItems,
+					totalAmount: cart.totalAmount,
+				})
+			);
 	}, [cart, dispatch]);
 
 	return (
