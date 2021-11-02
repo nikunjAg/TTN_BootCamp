@@ -19,14 +19,14 @@ const cartSlice = createSlice({
 				// New Item
 				state.items.unshift({ ...action.payload, qty: 1 });
 				state.totalItems += 1;
-				state.totalAmount += action.payload.amount;
+				state.totalAmount += action.payload.price;
 				return;
 			}
 
 			// Already exists
 			item.qty += 1;
 			state.totalItems += 1;
-			state.totalAmount += action.payload.amount;
+			state.totalAmount += action.payload.price;
 		},
 		removeItemFromCart(state, action) {
 			const item = state.items.find(
@@ -48,7 +48,7 @@ const cartSlice = createSlice({
 			}
 
 			state.totalItems -= 1;
-			state.totalAmount -= action.payload.amount;
+			state.totalAmount -= action.payload.price;
 		},
 	},
 });
