@@ -2,14 +2,11 @@ import { Fragment, useState, useEffect, Component } from "react";
 
 import Users from "./Users";
 import styles from "./UserFinder.module.css";
-
-const DUMMY_USERS = [
-	{ id: "u1", name: "User A" },
-	{ id: "u2", name: "User B" },
-	{ id: "u3", name: "User C" },
-];
+import UsersContext from "../store/users-context";
 
 class UserFinder extends Component {
+	static contextType = UsersContext;
+
 	constructor() {
 		super();
 		this.state = {
@@ -27,7 +24,7 @@ class UserFinder extends Component {
 		console.log("Component Did Mount [UsersFinder]");
 
 		setTimeout(() => {
-			this.setState({ filteredUsers: DUMMY_USERS });
+			this.setState({ filteredUsers: this.context.users });
 		}, 1000);
 	}
 
@@ -35,7 +32,7 @@ class UserFinder extends Component {
 		console.log("Component Did Update [UsersFinder]");
 
 		if (prevState.searchTerm !== this.state.searchTerm) {
-			const filteredUsers = DUMMY_USERS.filter((user) =>
+			const filteredUsers = this.context.users.filter((user) =>
 				user.name
 					.toLowerCase()
 					.includes(this.state.searchTerm.toLowerCase())
