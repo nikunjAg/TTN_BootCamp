@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
 
-import Card from "../UI/Card";
 import "./IngredientForm.css";
+import Card from "../UI/Card";
+import LoadingIndicator from "../UI/LoadingIndicator";
 
 const IngredientForm = React.memo((props) => {
 	const [ingredientName, setIngredientName] = useState("");
@@ -37,6 +38,10 @@ const IngredientForm = React.memo((props) => {
 	return (
 		<section className="ingredient-form">
 			<Card>
+				{props.loading && (
+					<LoadingIndicator className="ingredient-form__spinner" />
+				)}
+
 				<form onSubmit={submitHandler}>
 					<div className="form-control">
 						<label htmlFor="title">Name</label>

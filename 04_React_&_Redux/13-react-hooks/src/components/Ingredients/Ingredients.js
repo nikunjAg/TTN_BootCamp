@@ -1,20 +1,29 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import IngredientForm from "./IngredientForm";
 import Search from "./Search";
 import IngredientList from "./IngredientList";
+import ErrorModal from "../UI/ErrorModal";
 
 const INGREDIENTS_URL =
 	"https://react-hooks-demo-8c722.firebaseio.com/ingredients.json";
 
 function Ingredients() {
 	const [ingredients, setIngredients] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState(null);
+
+	const clearErrorHandler = () => {
+		setError(null);
+	};
 
 	const filterIngredientsHandler = useCallback((filteredIngredients) => {
 		setIngredients(filteredIngredients);
 	}, []);
 
 	const addNewIngredientHandler = (ingredientData) => {
+		setIsLoading(true);
+		setError(null);
 		fetch(INGREDIENTS_URL, {
 			method: "POST",
 			body: JSON.stringify(ingredientData),
@@ -36,13 +45,17 @@ function Ingredients() {
 				setIngredients((oldIngredients) =>
 					oldIngredients.concat(newIngredient)
 				);
+				setIsLoading(false);
 			})
 			.catch((error) => {
-				console.log(error);
+				setError(error.message);
+				setIsLoading(false);
 			});
 	};
 
 	const removeIngredientHandler = (ingredientId) => {
+		setIsLoading(true);
+		setError(null);
 		fetch(
 			`https://react-hooks-demo-8c722.firebaseio.com/ingredients/${ingredientId}.json`,
 			{
@@ -60,19 +73,32 @@ function Ingredients() {
 				};
 
 				setIngredients(removeIngredient);
+				setIsLoading(false);
 			})
 			.catch((error) => {
-				console.log(error);
+				setError(error.message);
+				setIsLoading(false);
 			});
 	};
 
 	return (
 		<div className="App">
-			<IngredientForm onAddIngredient={addNewIngredientHandler} />
+			{error && (
+				<ErrorModal onClose={clearErrorHandler}>{error}</ErrorModal>
+			)}
+			<IngredientForm
+				onAddIngredient={addNewIngredientHandler}
+				loading={isLoading}
+			/>
 
 			<section>
-				<Search onFilterIngredients={filterIngredientsHandler} />
+				<Search
+					onSetLoading={setIsLoading}
+					onSetError={setError}
+					onFilterIngredients={filterIngredientsHandler}
+				/>
 				<IngredientList
+					loading={isLoading}
 					ingredients={ingredients}
 					onRemoveIngredient={removeIngredientHandler}
 				/>

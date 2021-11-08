@@ -1,10 +1,14 @@
 import React from "react";
 
 import "./IngredientList.css";
+import LoadingIndicator from "../UI/LoadingIndicator";
 
 const IngredientList = (props) => {
 	return (
 		<section className="ingredient-list">
+			{props.loading && (
+				<LoadingIndicator className="ingredients-list__spinner" />
+			)}
 			<h2>Loaded Ingredients</h2>
 			<ul>
 				{props.ingredients.map((ig) => (
