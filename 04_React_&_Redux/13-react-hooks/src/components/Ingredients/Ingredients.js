@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useReducer } from "react";
+import React, { useCallback, useReducer } from "react";
 
 import IngredientForm from "./IngredientForm";
 import Search from "./Search";
@@ -21,14 +21,30 @@ const ingredientsReducer = (ingredients, action) => {
 	}
 };
 
+const httpReducer = (httpState, action) => {
+	switch (action.type) {
+		case "SEND":
+			return { loading: true, error: null };
+		case "SUCCESS":
+			return { ...httpState, loading: false };
+		case "ERROR":
+			return { loading: false, error: action.error };
+		case "CLEAR_ERROR":
+			return { ...httpState, error: null };
+		default:
+			throw new Error("Should not react here.");
+	}
+};
+
 function Ingredients() {
 	const [userIngredients, dispatch] = useReducer(ingredientsReducer, []);
-	// const [ingredients, setIngredients] = useState([]);
-	const [isLoading, setIsLoading] = useState(false);
-	const [error, setError] = useState(null);
+	const [httpState, dispatchHttp] = useReducer(httpReducer, {
+		loading: false,
+		error: null,
+	});
 
 	const clearErrorHandler = () => {
-		setError(null);
+		dispatchHttp({ type: "CLEAR_ERROR" });
 	};
 
 	const filterIngredientsHandler = useCallback((filteredIngredients) => {
@@ -36,8 +52,7 @@ function Ingredients() {
 	}, []);
 
 	const addNewIngredientHandler = (ingredientData) => {
-		setIsLoading(true);
-		setError(null);
+		dispatchHttp({ type: "SEND" });
 		fetch(INGREDIENTS_URL, {
 			method: "POST",
 			body: JSON.stringify(ingredientData),
@@ -57,17 +72,15 @@ function Ingredients() {
 				};
 
 				dispatch({ type: "ADD", ingredient: newIngredient });
-				setIsLoading(false);
+				dispatchHttp({ type: "SUCCESS" });
 			})
 			.catch((error) => {
-				setError(error.message);
-				setIsLoading(false);
+				dispatchHttp({ type: "ERROR", error: error.message });
 			});
 	};
 
 	const removeIngredientHandler = (ingredientId) => {
-		setIsLoading(true);
-		setError(null);
+		dispatchHttp({ type: "SEND" });
 		fetch(
 			`https://react-hooks-demo-8c722.firebaseio.com/ingredients/${ingredientId}.json`,
 			{
@@ -79,32 +92,45 @@ function Ingredients() {
 					throw new Error("Unable to delete ingredient!");
 
 				dispatch({ type: "REMOVE", id: ingredientId });
-				setIsLoading(false);
+				dispatchHttp({ type: "SUCCESS" });
 			})
 			.catch((error) => {
-				setError(error.message);
-				setIsLoading(false);
+				console.log(error);
+				dispatchHttp({ type: "ERROR", error: error.message });
 			});
 	};
 
 	return (
 		<div className="App">
-			{error && (
-				<ErrorModal onClose={clearErrorHandler}>{error}</ErrorModal>
+			{httpState.error && (
+				<ErrorModal onClose={clearErrorHandler}>
+					{httpState.error}
+				</ErrorModal>
 			)}
 			<IngredientForm
 				onAddIngredient={addNewIngredientHandler}
-				loading={isLoading}
+				loading={httpState.loading}
 			/>
 
 			<section>
 				<Search
-					onSetLoading={setIsLoading}
-					onSetError={setError}
+					onSetLoading={useCallback(
+						() => dispatchHttp({ type: "SEND" }),
+						[]
+					)}
+					onSetSuccess={useCallback(
+						() => dispatchHttp({ type: "SUCCESS" }),
+						[]
+					)}
+					onSetError={useCallback(
+						(error) =>
+							dispatchHttp({ type: "ERROR", error: error }),
+						[]
+					)}
 					onFilterIngredients={filterIngredientsHandler}
 				/>
 				<IngredientList
-					loading={isLoading}
+					loading={httpState.loading}
 					ingredients={userIngredients}
 					onRemoveIngredient={removeIngredientHandler}
 				/>

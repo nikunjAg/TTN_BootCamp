@@ -7,7 +7,7 @@ const INGREDIENTS_URL =
 	"https://react-hooks-demo-8c722.firebaseio.com/ingredients.json";
 
 const Search = React.memo(
-	({ onSetLoading, onSetError, onFilterIngredients }) => {
+	({ onSetLoading, onSetSuccess, onSetError, onFilterIngredients }) => {
 		const [enteredFilter, setEnteredFilter] = useState("");
 
 		useEffect(() => {
@@ -17,8 +17,7 @@ const Search = React.memo(
 						? ""
 						: `?orderBy="title"&equalTo="${enteredFilter}"`;
 
-				onSetLoading(true);
-				onSetError(null);
+				onSetLoading();
 
 				const response = await fetch(INGREDIENTS_URL + query);
 
@@ -32,20 +31,25 @@ const Search = React.memo(
 				}));
 
 				onFilterIngredients(filteredIngredients);
-				onSetLoading(false);
+				onSetSuccess();
 			};
 
 			const timerId = setTimeout(() => {
 				filterIngredients().catch((error) => {
 					onSetError(error.message);
-					onSetLoading(false);
 				});
 			}, 500);
 
 			return () => {
 				clearTimeout(timerId);
 			};
-		}, [enteredFilter, onFilterIngredients, onSetLoading, onSetError]);
+		}, [
+			enteredFilter,
+			onFilterIngredients,
+			onSetLoading,
+			onSetSuccess,
+			onSetError,
+		]);
 
 		const filterChangeHandler = (event) => {
 			setEnteredFilter(event.target.value);
