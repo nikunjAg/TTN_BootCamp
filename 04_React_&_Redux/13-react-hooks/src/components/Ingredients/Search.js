@@ -30,7 +30,13 @@ const Search = React.memo(({ onFilterIngredients }) => {
 			onFilterIngredients(filteredIngredients);
 		};
 
-		filterIngredients().catch((error) => console.log(error));
+		const timerId = setTimeout(() => {
+			filterIngredients().catch((error) => console.log(error));
+		}, 500);
+
+		return () => {
+			clearTimeout(timerId);
+		};
 	}, [enteredFilter, onFilterIngredients]);
 
 	const filterChangeHandler = (event) => {
