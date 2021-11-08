@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useReducer } from "react";
 
 import IngredientForm from "./IngredientForm";
 import Search from "./Search";
@@ -8,8 +8,22 @@ import ErrorModal from "../UI/ErrorModal";
 const INGREDIENTS_URL =
 	"https://react-hooks-demo-8c722.firebaseio.com/ingredients.json";
 
+const ingredientsReducer = (ingredients, action) => {
+	switch (action.type) {
+		case "SET":
+			return action.ingredients;
+		case "ADD":
+			return [...ingredients, action.ingredient];
+		case "REMOVE":
+			return ingredients.filter((ing) => ing.id !== action.id);
+		default:
+			throw new Error("Should not react here");
+	}
+};
+
 function Ingredients() {
-	const [ingredients, setIngredients] = useState([]);
+	const [userIngredients, dispatch] = useReducer(ingredientsReducer, []);
+	// const [ingredients, setIngredients] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
 
@@ -18,7 +32,7 @@ function Ingredients() {
 	};
 
 	const filterIngredientsHandler = useCallback((filteredIngredients) => {
-		setIngredients(filteredIngredients);
+		dispatch({ type: "SET", ingredients: filteredIngredients });
 	}, []);
 
 	const addNewIngredientHandler = (ingredientData) => {
@@ -42,9 +56,7 @@ function Ingredients() {
 					...ingredientData,
 				};
 
-				setIngredients((oldIngredients) =>
-					oldIngredients.concat(newIngredient)
-				);
+				dispatch({ type: "ADD", ingredient: newIngredient });
 				setIsLoading(false);
 			})
 			.catch((error) => {
@@ -66,13 +78,7 @@ function Ingredients() {
 				if (!response.ok)
 					throw new Error("Unable to delete ingredient!");
 
-				const removeIngredient = (ingredients) => {
-					return ingredients.filter(
-						(ingredient) => ingredient.id !== ingredientId
-					);
-				};
-
-				setIngredients(removeIngredient);
+				dispatch({ type: "REMOVE", id: ingredientId });
 				setIsLoading(false);
 			})
 			.catch((error) => {
@@ -99,7 +105,7 @@ function Ingredients() {
 				/>
 				<IngredientList
 					loading={isLoading}
-					ingredients={ingredients}
+					ingredients={userIngredients}
 					onRemoveIngredient={removeIngredientHandler}
 				/>
 			</section>
