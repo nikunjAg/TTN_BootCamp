@@ -43,13 +43,27 @@ function Ingredients() {
 	};
 
 	const removeIngredientHandler = (ingredientId) => {
-		const removeIngredient = (ingredients) => {
-			return ingredients.filter(
-				(ingredient) => ingredient.id !== ingredientId
-			);
-		};
+		fetch(
+			`https://react-hooks-demo-8c722.firebaseio.com/ingredients/${ingredientId}.json`,
+			{
+				method: "DELETE",
+			}
+		)
+			.then((response) => {
+				if (!response.ok)
+					throw new Error("Unable to delete ingredient!");
 
-		setIngredients(removeIngredient);
+				const removeIngredient = (ingredients) => {
+					return ingredients.filter(
+						(ingredient) => ingredient.id !== ingredientId
+					);
+				};
+
+				setIngredients(removeIngredient);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	};
 
 	return (
