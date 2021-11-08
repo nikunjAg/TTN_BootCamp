@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import Card from "../UI/Card";
 import "./IngredientForm.css";
@@ -6,7 +6,7 @@ import "./IngredientForm.css";
 const IngredientForm = React.memo((props) => {
 	const [ingredientName, setIngredientName] = useState("");
 	const [ingredientAmount, setIngredientAmount] = useState("");
-	// const [inputState, setInputState] = useState({ name: "", amount: "" });
+	const nameInputRef = useRef();
 
 	const nameChangeHandler = (event) => {
 		setIngredientName(event.target.value);
@@ -16,11 +16,22 @@ const IngredientForm = React.memo((props) => {
 		setIngredientAmount(event.target.value);
 	};
 
+	const resetFormHandler = () => {
+		setIngredientName("");
+		setIngredientAmount("");
+
+		nameInputRef.current.focus();
+	};
+
 	const submitHandler = (event) => {
 		event.preventDefault();
+		const ingredient = {
+			title: ingredientName,
+			amount: +ingredientAmount,
+		};
 
-		// Validate Ingredient Data
-		// if (ingredientName.trim().length === 0 || +ingredientAmount)
+		props.onAddIngredient(ingredient);
+		resetFormHandler();
 	};
 
 	return (
@@ -32,6 +43,7 @@ const IngredientForm = React.memo((props) => {
 						<input
 							type="text"
 							id="title"
+							ref={nameInputRef}
 							value={ingredientName}
 							onChange={nameChangeHandler}
 						/>
