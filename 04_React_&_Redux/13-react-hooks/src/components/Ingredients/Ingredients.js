@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import IngredientForm from "./IngredientForm";
 import Search from "./Search";
@@ -10,27 +10,8 @@ const INGREDIENTS_URL =
 function Ingredients() {
 	const [ingredients, setIngredients] = useState([]);
 
-	useEffect(() => {
-		const fetchIngredients = async () => {
-			const response = await fetch(INGREDIENTS_URL);
-
-			if (!response.ok) {
-				throw new Error("Somehting went wrong!");
-			}
-
-			const data = await response.json();
-
-			const loadedIngredients = Object.keys(data).map((id) => ({
-				...data[id],
-				id: id,
-			}));
-
-			setIngredients(loadedIngredients);
-		};
-
-		fetchIngredients().catch((error) => {
-			console.log(error.message);
-		});
+	const filterIngredientsHandler = useCallback((filteredIngredients) => {
+		setIngredients(filteredIngredients);
 	}, []);
 
 	const addNewIngredientHandler = (ingredientData) => {
@@ -76,7 +57,7 @@ function Ingredients() {
 			<IngredientForm onAddIngredient={addNewIngredientHandler} />
 
 			<section>
-				<Search />
+				<Search onFilterIngredients={filterIngredientsHandler} />
 				<IngredientList
 					ingredients={ingredients}
 					onRemoveIngredient={removeIngredientHandler}
