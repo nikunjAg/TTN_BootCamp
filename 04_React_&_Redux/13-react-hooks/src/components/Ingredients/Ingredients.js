@@ -100,8 +100,6 @@ function Ingredients() {
 			});
 	}, []);
 
-	console.log("Ingredients", httpState.loading, userIngredients);
-
 	return (
 		<div className="App">
 			{httpState.error && (

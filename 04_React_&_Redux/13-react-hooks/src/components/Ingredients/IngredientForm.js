@@ -35,8 +35,6 @@ const IngredientForm = React.memo((props) => {
 		resetFormHandler();
 	};
 
-	console.log("Reevaluating Ingredients FORM ");
-
 	return (
 		<section className="ingredient-form">
 			<Card>
