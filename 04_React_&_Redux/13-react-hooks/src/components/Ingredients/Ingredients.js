@@ -43,15 +43,15 @@ function Ingredients() {
 		error: null,
 	});
 
-	const clearErrorHandler = () => {
+	const clearErrorHandler = useCallback(() => {
 		dispatchHttp({ type: "CLEAR_ERROR" });
-	};
+	}, []);
 
 	const filterIngredientsHandler = useCallback((filteredIngredients) => {
 		dispatch({ type: "SET", ingredients: filteredIngredients });
 	}, []);
 
-	const addNewIngredientHandler = (ingredientData) => {
+	const addNewIngredientHandler = useCallback((ingredientData) => {
 		dispatchHttp({ type: "SEND" });
 		fetch(INGREDIENTS_URL, {
 			method: "POST",
@@ -77,9 +77,9 @@ function Ingredients() {
 			.catch((error) => {
 				dispatchHttp({ type: "ERROR", error: error.message });
 			});
-	};
+	}, []);
 
-	const removeIngredientHandler = (ingredientId) => {
+	const removeIngredientHandler = useCallback((ingredientId) => {
 		dispatchHttp({ type: "SEND" });
 		fetch(
 			`https://react-hooks-demo-8c722.firebaseio.com/ingredients/${ingredientId}.json`,
@@ -98,7 +98,9 @@ function Ingredients() {
 				console.log(error);
 				dispatchHttp({ type: "ERROR", error: error.message });
 			});
-	};
+	}, []);
+
+	console.log("Ingredients", httpState.loading, userIngredients);
 
 	return (
 		<div className="App">
