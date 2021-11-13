@@ -52,3 +52,4 @@ const todoApp = combineReducers({
 });
 
 const store = createStore(todoApp);
+export default store;
