@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="./script.js" defer></script>
+
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: "Fira Sans", sans-serif;
+			}
+			header {
+				height: 4rem;
+				padding: 0 1rem;
+				box-shadow: 0px 1px 3px 3px rgba(0, 0, 0, 0.26);
+			}
+
+			ul {
+				list-style-type: none;
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
+				height: 100%;
+			}
+
+			li {
+				position: relative;
+
+				display: flex;
+				align-items: center;
+
+				height: 100%;
+				padding: 8px 16px;
+				font-size: 16px;
+				font-weight: 600;
+				color: #000;
+
+				cursor: pointer;
+				transition: 0.15s ease-out;
+			}
+
+			li:not(:last-of-type) {
+				margin-right: 1rem;
+			}
+
+			li.active::after {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				height: 2px;
+				width: 100%;
+				background-color: #d07b34;
+			}
+
+			li.active,
+			li:hover {
+				color: #d07b34;
+			}
+
+			p {
+				text-align: center;
+				margin: 2rem auto;
+			}
+
+			p.error-message {
+				color: #f18989;
+			}
+		</style>
+
+		<title>Document</title>
+	</head>
+	<body>
+		<header>
+			<ul>
+				<li class="active" data-path="/">Home</li>
+				<li data-path="/about">About</li>
+				<li data-path="/contact">Contact Us</li>
+				<li data-path="/invalid-page">Invalid Page</li>
+			</ul>
+		</header>
+		<main>
+			<p>Page Content</p>
+		</main>
+	</body>
+</html>
