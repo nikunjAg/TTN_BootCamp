@@ -1,0 +1,16 @@
+.users {
+	margin: 2rem 0rem;
+	padding: 1rem;
+}
+
+.spinner-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.users-list {
+	list-style-type: none;
+	width: 600px;
+	max-width: 95%;
+	margin: 0 auto;
+}
