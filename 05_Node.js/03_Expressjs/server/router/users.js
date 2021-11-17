@@ -41,6 +41,16 @@ router.post("/", (req, res, next) => {
 	try {
 		const { firstname, lastname, email } = req.body;
 
+		if (
+			firstname.trim().length === 0 ||
+			lastname.trim().length === 0 ||
+			email.trim().length === 0
+		) {
+			const error = new Error("Please enter a valid data");
+			error.code = 400;
+			throw error;
+		}
+
 		const user = {
 			id: Math.random().toString(),
 			firstname,
