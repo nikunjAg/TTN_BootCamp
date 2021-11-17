@@ -1,5 +1,5 @@
 const http = require("http");
-const url = require("url");
+
 const { getAllStudent, filterStudentsByBranch } = require("./students");
 
 const sendJSON = (res, json) => {

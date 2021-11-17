@@ -1,5 +1,4 @@
 const http = require("http");
-const url = require("url");
 
 const getFilteredUsers = require("./users");
 

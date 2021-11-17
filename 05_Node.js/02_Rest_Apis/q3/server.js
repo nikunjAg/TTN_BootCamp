@@ -17,17 +17,18 @@ const setHeaders = (res) => {
 
 const server = http.createServer((req, res) => {
 	const { method } = req;
-	const parsedUrl = url.parse(req.url);
+	const baseURL = "http://" + req.headers.host + "/";
+	const parsedUrl = new URL(req.url, baseURL);
 
 	setHeaders(res);
 	if (
-		(parsedUrl.path === "/" || parsedUrl.path === "/home") &&
+		(parsedUrl.pathname === "/" || parsedUrl.pathname === "/home") &&
 		method === "GET"
 	) {
 		return sendJSON(res, { content: "Home Page" });
-	} else if (parsedUrl.path === "/about" && method === "GET") {
+	} else if (parsedUrl.pathname === "/about" && method === "GET") {
 		return sendJSON(res, { content: "About Page" });
-	} else if (parsedUrl.path === "/contact" && method === "GET") {
+	} else if (parsedUrl.pathname === "/contact" && method === "GET") {
 		return sendJSON(res, { content: "Contact Page" });
 	}
 	res.statusCode = 400;

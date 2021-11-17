@@ -69,7 +69,7 @@ const getBadRequestError = () => {
 };
 
 const getFilteredUsers = (username, firstname, lastname, cb) => {
-	console.log(typeof username, typeof firstname, typeof lastname);
+	// console.log(typeof username, typeof firstname, typeof lastname);
 	let filteredUsers = users;
 
 	if (username && typeof username === "string") {
