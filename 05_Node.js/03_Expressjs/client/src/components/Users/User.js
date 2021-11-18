@@ -22,6 +22,10 @@ const User = (props) => {
 				<span>Email: </span>
 				{props.email}
 			</p>
+			<p>
+				<span>Created On: </span>
+				{new Date(props.created_on).toString()}
+			</p>
 		</li>
 	);
 };

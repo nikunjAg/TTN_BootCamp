@@ -14,8 +14,13 @@ const AddUser = () => {
 			.post("/users", userData)
 			.then(({ data }) => {
 				const userId = data.id;
+				const userCreatedOn = data.created_on;
 				console.log(data.message);
-				ctx.addUser({ ...userData, id: userId });
+				ctx.addUser({
+					...userData,
+					id: userId,
+					created_on: userCreatedOn,
+				});
 			})
 			.catch((err) => {
 				console.log(err.message);

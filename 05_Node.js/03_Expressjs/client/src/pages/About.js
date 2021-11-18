@@ -37,8 +37,8 @@ const About = () => {
 				<span style={{ fontWeight: "600" }}>Technologies Used: </span>
 			</p>
 			<ul style={{ marginLeft: "1rem" }}>
-				{userInfo["technologies_used"].map((tech) => (
-					<li>{tech}</li>
+				{userInfo["technologies_used"].map((tech, idx) => (
+					<li key={idx}>{tech}</li>
 				))}
 			</ul>
 		</section>
