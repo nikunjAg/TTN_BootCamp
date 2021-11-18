@@ -8,24 +8,28 @@ let users = [
 		firstname: "Eric",
 		lastname: "Park",
 		email: "eric.park@tothenew.com",
+		created_on: Date.now(),
 	},
 	{
 		id: Math.random().toString(),
 		firstname: "Steven",
 		lastname: "Cummings",
 		email: "steven.cummins@tothenew.com",
+		created_on: Date.now(),
 	},
 	{
 		id: Math.random().toString(),
 		firstname: "Cailin",
 		lastname: "Rich",
 		email: "cailin.rich@tothenew.com",
+		created_on: Date.now(),
 	},
 	{
 		id: Math.random().toString(),
 		firstname: "Hunter",
 		lastname: "Gilbert",
 		email: "hunter.gilbert@tothenew.com",
+		created_on: Date.now(),
 	},
 ];
 
@@ -37,9 +41,14 @@ router.get("/", (req, res, next) => {
 	}
 });
 
-router.post("/", (req, res, next) => {
+const addCreatedOn = (req, res, next) => {
+	req.body.created_on = Date.now();
+	next();
+};
+
+router.post("/", addCreatedOn, (req, res, next) => {
 	try {
-		const { firstname, lastname, email } = req.body;
+		const { firstname, lastname, email, created_on } = req.body;
 
 		if (
 			firstname.trim().length === 0 ||
@@ -56,12 +65,14 @@ router.post("/", (req, res, next) => {
 			firstname,
 			lastname,
 			email,
+			created_on,
 		};
 
 		users.push(user);
 
 		res.status(200).json({
 			id: user.id,
+			created_on,
 			message: "Users Added Successfully",
 		});
 	} catch (err) {
