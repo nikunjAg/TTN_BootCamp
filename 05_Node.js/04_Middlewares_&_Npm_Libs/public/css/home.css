@@ -1,0 +1,19 @@
+header {
+	background-color: #000;
+	color: #fff;
+	height: 4rem;
+	padding: 1rem 0rem;
+	font-size: 2rem;
+	line-height: 100%;
+	font-weight: 900;
+	text-align: center;
+}
+
+#landing {
+	margin: 2rem 0rem;
+	padding: 1rem;
+}
+
+#landing > p {
+	margin-bottom: 0.5rem;
+}
