@@ -20,7 +20,7 @@ module.exports.create = async (req, res, next) => {
 
 module.exports.update = async (req, res, next) => {
 	try {
-		const response = await user.update(req.param, req.body);
+		const response = await user.update(req.params, req.body);
 		res.send(response);
 	} catch (err) {
 		next(err);
