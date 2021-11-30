@@ -2,17 +2,9 @@
 <link rel="stylesheet" href="/css/auth.css">
 </head>
 	<body>
-		<section id="signup-wrapper" >
-		<form class="signup-form" method="post" action="/signup" >
-      <h3>Sign Up</h3>
-			<div class="form-control">
-				<label>Name</label>
-				<input 
-					type="text" 
-					placeholder="Enter Name" 
-					name="name" 
-					value="<%= typeof name !== 'undefined' ? name : '' %>" />
-			</div>
+		<section id="login-wrapper" >
+		<form class="login-form" method="post" action="/login" >
+      <h3>Login</h3>
 			<div class="form-control">
 				<label>Email</label>
 				<input 
@@ -31,10 +23,10 @@
 				/>
 			</div>
       <div class="form-actions">
-        <button type="submit">Sign Up</button>
+        <button type="submit">Login</button>
       </div>
-			<div class="form-links" >
-				<p class="link" >Have an account? <a href="/users/login" >Login</a></p>
+			<div class="form-links">
+				<p class="link" >Create an account? <a href="/users/signup" >Sign Up</a></p>
 			</div>
 		</form>
 	</section>

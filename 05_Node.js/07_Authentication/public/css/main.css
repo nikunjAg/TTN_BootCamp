@@ -2,31 +2,16 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	font-family: sans-serif;
+	font-family: "Fira Sans", sans-serif;
 }
 
-#signup-form {
-	width: 600px;
-	max-width: 95%;
-	margin: 3rem auto;
-
-	border: 1px solid #ccc;
-	border-radius: 7px;
-
-	padding: 1rem;
-}
-
-#signup-form h3 {
-	font-size: 1.3rem;
-	margin-bottom: 0.5rem;
-}
-
-.form-control {
+.form-control,
+.form-actions {
 	margin-bottom: 1rem;
 }
 
 .form-control > label {
-	font-weight: 600;
+	font-weight: 500;
 	display: inline-block;
 	font-size: 0.9rem;
 	margin-bottom: 3px;
@@ -63,4 +48,12 @@
 
 	border: 1px solid #ccc;
 	border-radius: 4px;
+}
+
+.form-links .link {
+	font-size: 0.9rem;
+}
+
+.form-links .link > a {
+	color: #f05959;
 }

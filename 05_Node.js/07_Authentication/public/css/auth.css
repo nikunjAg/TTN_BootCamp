@@ -1,0 +1,44 @@
+#signup-wrapper,
+#login-wrapper {
+	width: 100%;
+}
+
+.signup-form,
+.login-form {
+	width: 400px;
+	max-width: 95%;
+	margin: 0rem auto;
+	margin-top: 15vh;
+
+	border: 1px solid #ccc;
+	border-radius: 7px;
+
+	padding: 1rem;
+}
+
+.signup-form h3,
+.login-form h3 {
+	font-size: 1.3rem;
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+
+	text-align: center;
+}
+
+.signup-form > .form-actions,
+.login-form > .form-actions {
+	margin-top: 1.5rem;
+}
+
+.signup-form > .form-actions > button,
+.login-form > .form-actions > button {
+	width: 100%;
+
+	text-align: center;
+
+	border-radius: 4px;
+	border-color: #e64848;
+	background-color: #e64848;
+	color: #fff;
+	font-size: 0.9rem;
+}
