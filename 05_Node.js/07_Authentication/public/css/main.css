@@ -5,6 +5,29 @@
 	font-family: "Fira Sans", sans-serif;
 }
 
+.errors-list,
+.success-list {
+	margin-bottom: 1rem;
+}
+
+.errors-list .error,
+.success-list .success {
+	padding: 8px 12px;
+	color: #000;
+	/* background-color: #63a863; */
+	font-size: 0.85rem;
+	margin-bottom: 5px;
+	border-radius: 4px;
+}
+
+.errors-list .error {
+	background-color: #df7070;
+}
+
+.success-list .success {
+	background-color: #77d177;
+}
+
 .form-control,
 .form-actions {
 	margin-bottom: 1rem;

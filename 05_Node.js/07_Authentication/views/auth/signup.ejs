@@ -3,8 +3,9 @@
 </head>
 	<body>
 		<section id="signup-wrapper" >
-		<form class="signup-form" method="post" action="/signup" >
+		<form class="signup-form" method="post" action="/users/signup" >
       <h3>Sign Up</h3>
+				<%- include('../includes/messages-list.ejs') %>
 			<div class="form-control">
 				<label>Name</label>
 				<input 
@@ -27,7 +28,16 @@
 					type="password"
 					placeholder="Enter Password"
 					name="password"
-					value=""
+					value="<%= typeof password !== 'undefined' ? password : '' %>"  
+				/>
+			</div>
+			<div class="form-control">
+				<label>Confirm Password</label>
+				<input
+					type="password"
+					placeholder="Confirm Password"
+					name="password2"
+					value="<%= typeof password2 !== 'undefined' ? password2 : '' %>"  
 				/>
 			</div>
       <div class="form-actions">

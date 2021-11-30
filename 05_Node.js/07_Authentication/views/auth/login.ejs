@@ -3,8 +3,9 @@
 </head>
 	<body>
 		<section id="login-wrapper" >
-		<form class="login-form" method="post" action="/login" >
+		<form class="login-form" method="post" action="/users/login" >
       <h3>Login</h3>
+			<%- include('../includes/messages-list.ejs') %>
 			<div class="form-control">
 				<label>Email</label>
 				<input 
@@ -19,7 +20,7 @@
 					type="password"
 					placeholder="Enter Password"
 					name="password"
-					value=""
+					value="<%= typeof password !== 'undefined' ? password : '' %>"  
 				/>
 			</div>
       <div class="form-actions">
