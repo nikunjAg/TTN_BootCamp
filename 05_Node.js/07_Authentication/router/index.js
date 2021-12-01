@@ -1,8 +1,10 @@
 const express = require("express");
 
+const isAuthenticated = require("../middlewares/isAuthenticated");
+
 const router = express.Router();
 
-router.get("/", (req, res, next) => {
+router.get("/", isAuthenticated, (req, res, next) => {
 	res.render("index");
 });
 

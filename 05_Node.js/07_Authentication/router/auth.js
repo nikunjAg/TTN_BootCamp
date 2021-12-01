@@ -1,5 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
+const passport = require("passport");
 
 const User = require("../model/User");
 
@@ -85,53 +86,56 @@ router.get("/login", (req, res, next) => {
 	res.render("auth/login");
 });
 
-router.post("/login", async (req, res, next) => {
-	try {
-		const { email, password } = req.body;
+router.post(
+	"/login",
+	async (req, res, next) => {
+		try {
+			const { email, password } = req.body;
 
-		const errors = [];
-		if (!email.trim() || !password.trim()) {
-			errors.push({ message: "Please enter values in the fields." });
+			const errors = [];
+			if (!email.trim() || !password.trim()) {
+				errors.push({ message: "Please enter values in the fields." });
+			}
+
+			if (password.trim().length < 6) {
+				errors.push({ message: "Please length too short." });
+			}
+
+			if (errors.length > 0) {
+				return res.render("auth/login", {
+					errors: errors,
+					email,
+					password,
+				});
+			}
+
+			const fetchedUser = await User.findOne({ email });
+
+			if (!fetchedUser) {
+				errors.push({ message: "No such user exists." });
+				return res.render("auth/login", {
+					errors: errors,
+					email,
+					password,
+				});
+			}
+
+			next();
+		} catch (err) {
+			next(err);
 		}
+	},
+	passport.authenticate("local", {
+		successRedirect: "/",
+		failureRedirect: "/users/login",
+		failureFlash: true,
+	})
+);
 
-		if (password.trim().length < 6) {
-			errors.push({ message: "Please length too short." });
-		}
-
-		if (errors.length > 0) {
-			return res.render("auth/login", {
-				errors: errors,
-				email,
-				password,
-			});
-		}
-
-		const fetchedUser = await User.findOne({ email });
-
-		if (!fetchedUser) {
-			errors.push({ message: "No such user exists." });
-			return res.render("auth/login", {
-				errors: errors,
-				email,
-				password,
-			});
-		}
-
-		const result = await bcrypt.compare(password, fetchedUser.password);
-
-		if (!result) {
-			errors.push({ message: "Passwords do not match." });
-			return res.render("auth/login", {
-				errors: errors,
-				email,
-				password,
-			});
-		}
-
-		return res.redirect("/");
-	} catch (err) {
-		next(err);
-	}
+router.get("/logout", (req, res, next) => {
+	req.logOut();
+	req.flash("success_msg", "Logged out successfully");
+	res.redirect("/users/login");
 });
 
 module.exports = router;

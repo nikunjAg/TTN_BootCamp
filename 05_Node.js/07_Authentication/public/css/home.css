@@ -1,0 +1,19 @@
+#welcome-page {
+	width: 500px;
+	max-width: 95%;
+
+	margin: 2rem auto;
+}
+
+.logout {
+	display: inline-block;
+	text-decoration: none;
+
+	border-radius: 4px;
+	font-size: 0.85rem;
+	padding: 6px 10px;
+	margin-top: 1rem;
+
+	background-color: #ccc;
+	color: #555;
+}

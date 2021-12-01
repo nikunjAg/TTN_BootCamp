@@ -1,13 +1,44 @@
+<!-- Form Errors -->
 <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
 <div class="errors-list">
 	<% for(let i = 0;i < errors.length;i++) { %>
 	<div class="error"><%= errors[i].message %></div>
 	<% } %>
 </div>
-<% } %> <% if (typeof success !== 'undefined' && success.length > 0) { %>
+<% } %>
+
+<!-- Success -->
+<% if (typeof success !== 'undefined' && success.length > 0) { %>
 <div class="success-list">
 	<% for(let i = 0;i < success.length;i++) { %>
 	<div class="success"><%= success[i].message %></div>
+	<% } %>
+</div>
+<% } %>
+
+<!-- success_msg -->
+<% if (typeof success_msg !== 'undefined' && success_msg.length > 0) { %>
+<div class="success-list">
+	<% for(let i = 0;i < success_msg.length;i++) { %>
+	<div class="success"><%= success_msg[i] %></div>
+	<% } %>
+</div>
+<% } %>
+
+<!-- error_msg -->
+<% if (typeof error_msg !== 'undefined' && error_msg.length > 0) { %>
+<div class="errors-list">
+	<% for(let i = 0;i < error_msg.length;i++) { %>
+	<div class="error"><%= error_msg[i] %></div>
+	<% } %>
+</div>
+<% } %>
+
+<!-- passport_error -->
+<% if (typeof passport_error !== 'undefined' && passport_error.length > 0) { %>
+<div class="errors-list">
+	<% for(let i = 0;i < passport_error.length;i++) { %>
+	<div class="error"><%= passport_error[i] %></div>
 	<% } %>
 </div>
 <% } %>
