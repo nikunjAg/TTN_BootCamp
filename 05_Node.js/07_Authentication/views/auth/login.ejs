@@ -24,11 +24,21 @@
 				/>
 			</div>
       <div class="form-actions">
-        <button type="submit">Login</button>
-      </div>
+        <button class="loginBtn" type="submit">Login</button>
+			</div>
 			<div class="form-links">
 				<p class="link" >Create an account? <a href="/users/signup" >Sign Up</a></p>
 			</div>
+			<div class="loginWith" >
+				<p>or you can sign in with</p>
+				<div class="login-methods" >
+					<a href="/users/auth/facebook" class="login-fb" >
+						<span class="loginIcon" >
+							<i class="fab fa-facebook-f"></i>
+						</span>
+					</a>
+				</div>
+      </div>
 		</form>
 	</section>
 <%- include('../includes/end.ejs') %>

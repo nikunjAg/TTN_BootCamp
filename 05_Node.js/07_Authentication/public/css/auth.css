@@ -30,15 +30,59 @@
 	margin-top: 1.5rem;
 }
 
-.signup-form > .form-actions > button,
-.login-form > .form-actions > button {
+.signup-form > .form-actions > button.signupBtn,
+.login-form > .form-actions > button.loginBtn {
+	margin-right: 1rem;
 	width: 100%;
 
 	text-align: center;
+	padding: 8px 16px;
 
+	border: 1px solid #e64848;
 	border-radius: 4px;
-	border-color: #e64848;
 	background-color: #e64848;
 	color: #fff;
 	font-size: 0.9rem;
+}
+
+/* Shared */
+.loginWith {
+	margin-top: 0.7rem;
+	text-align: center;
+}
+
+.loginWith > p {
+	font-size: 0.9rem;
+	color: #666;
+}
+
+.login-methods {
+	width: fit-content;
+	margin: 0.4rem auto 0 auto;
+}
+
+.login-methods > a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 30px;
+	height: 30px;
+
+	border-radius: 50%;
+	transition: 0.1s ease-in;
+}
+
+.login-fb {
+	background-color: #ccc;
+	color: #fff;
+}
+
+.login-fb:hover {
+	background-color: #3a5998;
+}
+
+.login-methods .loginIcon {
+	font-size: 16px;
+	color: inherit;
 }

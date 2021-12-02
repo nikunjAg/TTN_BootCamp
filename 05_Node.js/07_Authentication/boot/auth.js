@@ -1,12 +1,16 @@
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
-const Strategy = require("passport-local").Strategy;
+const LocalStrategy = require("passport-local").Strategy;
+const FacebookStrategy = require("passport-facebook").Strategy;
+
+const { FACEBOOK_APP_ID, FACEBOOK_APP_SECRET } = process.env;
 
 const User = require("../model/User");
 
 module.exports = () => {
+	// Passport Local Strategy
 	passport.use(
-		new Strategy({ usernameField: "email" }, async function (
+		new LocalStrategy({ usernameField: "email" }, async function (
 			username,
 			password,
 			done
@@ -35,6 +39,45 @@ module.exports = () => {
 				done(err);
 			}
 		})
+	);
+
+	// Passport Facebook Strategy
+	passport.use(
+		new FacebookStrategy(
+			{
+				clientID: FACEBOOK_APP_ID,
+				clientSecret: FACEBOOK_APP_SECRET,
+				callbackURL: "/users/auth/facebook/callback",
+				profileFields: ["id", "displayName", "email", "gender"],
+			},
+			async (accessToken, refreshToken, profile, done) => {
+				console.log("Profile", profile);
+
+				try {
+					const fetchedUser = await User.findOne({
+						userId: profile.id,
+					});
+
+					// Login with existing user
+					if (fetchedUser) {
+						console.log("Fetched User", fetchedUser);
+						return done(null, fetchedUser);
+					}
+
+					// Create a new user
+					const createdUser = await User.create({
+						userId: profile.id,
+						name: profile.displayName,
+						email: profile.emails ? profile.emails[0].value : "",
+						token: accessToken,
+					});
+
+					done(null, createdUser);
+				} catch (err) {
+					done(err);
+				}
+			}
+		)
 	);
 
 	// Serializing the user._id into the session

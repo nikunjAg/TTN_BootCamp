@@ -60,21 +60,17 @@
 .form-actions > button {
 	outline: none;
 	border-image: none;
-
-	padding: 8px 16px;
-	font-size: 1rem;
-	color: #555;
-	background-color: #ccc;
-	margin-right: 1rem;
-
 	cursor: pointer;
+	margin-bottom: 0.25rem;
+}
 
-	border: 1px solid #ccc;
-	border-radius: 4px;
+.form-links {
+	text-align: center;
 }
 
 .form-links .link {
 	font-size: 0.9rem;
+	color: #666;
 }
 
 .form-links .link > a {

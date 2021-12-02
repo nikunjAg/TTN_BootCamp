@@ -86,6 +86,7 @@ router.get("/login", (req, res, next) => {
 	res.render("auth/login");
 });
 
+// Login using Local Strategy
 router.post(
 	"/login",
 	async (req, res, next) => {
@@ -129,6 +130,22 @@ router.post(
 		successRedirect: "/",
 		failureRedirect: "/users/login",
 		failureFlash: true,
+	})
+);
+
+router.get(
+	"/auth/facebook",
+	passport.authenticate("facebook", {
+		authType: "reauthenticate",
+		scope: ["email", "public_profile"],
+	})
+);
+
+router.get(
+	"/auth/facebook/callback",
+	passport.authenticate("facebook", {
+		successRedirect: "/",
+		failureRedirect: "/users/login",
 	})
 );
 

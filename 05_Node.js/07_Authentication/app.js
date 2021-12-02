@@ -1,5 +1,7 @@
 "use strict";
 
+require("dotenv").config();
+
 const path = require("path");
 
 const express = require("express");
@@ -10,7 +12,7 @@ const authRouter = require("./router/auth");
 const indexRouter = require("./router/index");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 require("./boot/connection")();
 require("./boot/auth")();
@@ -53,7 +55,7 @@ app.use("/users", authRouter);
 // Error Handling
 app.use((err, req, res, next) => {
 	console.log(err);
-	res.status(500).send(err);
+	res.status(500).render("error", { err });
 });
 
 app.listen(PORT, () => {
